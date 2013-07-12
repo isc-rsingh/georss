@@ -15,10 +15,9 @@
 <h3> Point</h3>
 <p>A point contains a single latitude-longitude pair, separated by whitespace. </p>
 {% highlight xml %}
- <span><?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" 
-<strong>      xmlns:georss="http://www.georss.org/georss</strong>&quot; 
-      <span><strong>xmlns:gml="http://www.opengis.net/gml</strong>&quot;</span>></span>
+      xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml"
    <title>Earthquakes</title>
    <subtitle>International earthquake observation labs</subtitle>
    <link href="http://example.org/"/>
@@ -34,9 +33,9 @@
       <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a</id>
       <updated>2005-08-17T07:02:32Z</updated>
       <summary>We just had a big one.</summary>
-<span>      <strong><georss:point>45.256 -71.92</georss:point>
-      </strong></span><<span>/entry>
-</feed></span>
+      <georss:point>45.256 -71.92</georss:point>
+      </entry>
+</feed>
 {% endhighlight %}
 
 <h3> Line</h3>
