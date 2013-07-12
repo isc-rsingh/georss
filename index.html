@@ -1,70 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>GeoRSS Home</title>
-<link href="global.css" type="text/css" rel="stylesheet">
-</head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>
+			GeoRSS Home
+		</title>
+		<link href="global.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
 
-<body>
-
-<div id="Menu">
-	<p>
-	&bull; <a href="overview.html">Overview</a><br><br>
-	&bull; <a href="model.html">Content model</a><br><br>
-	&bull; Geo Encodings<br><br>
-	&nbsp;&nbsp;&nbsp;- <a href="gml.html">GML</a><br>
-	&nbsp;&nbsp;&nbsp;- <a href="simple.html">Simple</a><br>
-	&nbsp;&nbsp;&nbsp;- Micro<br>
-	&nbsp;&nbsp;&nbsp;- <a href="w3c.html">W3C Geo</a><br><br>
-	
-	&bull; Usage<br>
-	&nbsp;&nbsp;&nbsp;- <a href="atom.html">Atom</a><br>
-	&nbsp;&nbsp;&nbsp;- <a href="rdf_rss1.html">RDF / RSS 1</a><br>
-	&nbsp;&nbsp;&nbsp;- RSS 2<br><br>
-	&bull; <a href="http://www.georss.org/blog/">Blog</a><br>
-	&nbsp;&nbsp;&nbsp;- <a href="http://www.georss.org/blog/?cat=4">Software</a><br>
-	&nbsp;&nbsp;&nbsp;- <a href="http://www.georss.org/blog/?cat=7">Feeds</a><br>
-	</p>
-	
-	<p>&nbsp;</p>
-
-	<p align="center"><font size="-2">Sponsors<br>(alphabetically)<br></font>
-	<a href="http://www.eogeo.org" target="_blank"><img src="graphics/eogeo.png" alt="eogeo logo"></a><br>
-   <a href="http://www.opengeospatial.org" target="_blank"><img src="graphics/ogc_header_top_left.gif" alt="OGC logo" width="75" longdesc="http://www.opengeospatial.org"></a><br>
-	<a href="http://www.traversetechnologies.com" target="_blank"><img src="graphics/TTlogo.jpg" alt="Traverse logo" width="75" longdesc="http://www.brainoff.com"></a><br>
-	<a href="http://worldkit.org" target="_blank"><img src="graphics/worldkit.gif" alt="Worldkit logo" width="75" longdesc="http://www.worldkit.org"></a></p>
-	<p>&nbsp;</p>
- 	<p align="center"><font size="-2">License</span><br>
-	<a href="http://creativecommons.org/licenses/by-sa/2.5/" target="_blank" rel="license">
-	<img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br><br>
-	This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/2.5/" target="_blank" rel="license">
-	Creative Commons Attribution-ShareAlike 2.5 License</a>.</font></p>
-</div>
-
-<h1>GeoRSS :: <br>
-	Geographically Encoded Objects for RSS feeds</h1>
-<h2>&nbsp;</h2>
-<p>This site describes a number of ways to encode location in <a href="http://en.wikipedia.org/wiki/RSS_%28file_format%29" target="_blank">RSS</a> feeds. As RSS becomes more and more prevalent as a way to publish and share information, it becomes increasingly important that location is described in an interoperable manner so that applications can <strong>request</strong>, <strong>aggregate</strong>, <strong>share</strong> and <strong>map</strong> geographically tagged feeds.</p>
-<p> To avoid the fragmentation of language that has occured in RSS and other Web information encoding efforts, we have created this site to promote a relatively small number of encodings that meet the needs of a wide range of communities. By building these encodings on a common information model, we hope to promote interoperability and &quot;upwards-compatibility&quot; across encodings. </p>
-<p>At this point we have completed work on two encodings which we are calling GeoRSS GML and GeoRSS Simple. GeoRSS GML is a formal <a href="http://www.opengeospatial.org/groups/?iid=31" target="_blank">GML</a> Application Profile, and supports a greater range of features than Simple, notably coordinate reference systems other than WGS84 latitude/longitude. It is designed for use with <a href="http://en.wikipedia.org/wiki/Atom_%28standard%29" target="_blank">Atom 1.0</a>, RSS 2.0 and RSS 1.0, although it can be used just as easily in non-RSS XML encodings.  GeoRSS Simple has greater brevity, but also has limited extensibility. It can be used in all the same ways and places as GeoRSS GML. </p>
-<p>Finally, if you've come here simply looking for a way to encode a point in XML, use either the 'GML' or 'Simple' version:</p>
-Simple<br/>
-<pre><strong>&lt;georss:point&gt;45.256 -71.92&lt;/georss:point&gt;</strong></pre>
-
-GML<br/>
-<pre><strong>&lt;georss:where&gt;
-   &lt;gml:Point&gt;
-      &lt;gml:pos&gt;45.256 -71.92&lt;/gml:pos&gt;
-   &lt;/gml:Point&gt;</strong><strong>
-&lt;/georss:where&gt;</strong></pre>
-
-<p>If you want to know why, read on! </p>
-<p><a href="overview.html">Next&gt;&gt;</a></p>
-
-<hr align="center">
-<p><em><strong>Last update:</strong> April 19, 2006<br>
-</em><strong>Discussion list:</strong> <a href="http://lists.eogeo.org/mailman/listinfo/georss" target="_blank">http://lists.eogeo.org/mailman/listinfo/georss</a><br>
-</p>
-
-</body>
+			<p>
+				As RSS and Atom become more prevalent as a way to publish and share information, it becomes increasingly important that location is described in an interoperable manner so that applications can <b>request, aggregate, share and map</b> geographically tagged feeds. GeoRSS was designed as a lightweight, community driven way to extend existing feeds with geographic information.
+			</p>
+			<p>
+				There are currently two encodings of GeoRSS, <a href="/simple" title="simple">Simple</a> and <a href="/gml" title="gml">GML</a>:
+			</p>
+			<ul>
+				<li>
+					<a href="/simple" title="simple">GeoRSS-Simple</a> is meant as a very lightweight format that developers and users can quickly and easily add to their existing feeds with little effort. It supports basic geometries (point, line, box, polygon) and covers the typical use cases when encoding locations.
+				</li>
+				<li>
+					<a href="/gml" title="gml">GeoRSS GML</a> is a formal <a href="http://www.opengeospatial.org/groups/?iid=31" class="external text" title="http://www.opengeospatial.org/groups/?iid=31" rel="nofollow">GML</a> Application Profile, and supports a greater range of features, notably coordinate reference systems other than <a href="http://en.wikipedia.org/wiki/WGS84" class="external text" title="http://en.wikipedia.org/wiki/WGS84" rel="nofollow">WGS-84</a> latitude/longitude.
+				</li>
+			</ul>
+			<p>
+				Both formats are designed for use with <a href="http://en.wikipedia.org/wiki/Atom_%28standard%29" class="external text" title="http://en.wikipedia.org/wiki/Atom_%28standard%29" rel="nofollow">Atom 1.0</a>, RSS 2.0 and RSS 1.0, although it can be used just as easily in non-RSS XML encodings.
+			</p><a name="Community" id="Community"></a>
+			<h1>
+				<span class="editsection">[<a href="/index.php?title=Main_Page&amp;action=edit&amp;section=1" title="Edit section: Community">edit</a>]</span> <span class="mw-headline">Community</span>
+			</h1>
+			<ul>
+				<li>
+					<a href="http://lists.georss.org/listinfo.cgi/discuss-georss.org" class="external text" title="http://lists.georss.org/listinfo.cgi/discuss-georss.org" rel="nofollow">GeoRSS Mailing List</a>
+				</li>
+				<li>
+					<a href="/Tools" title="Tools">Tools</a> - servers, clients, libraries, examples
+				</li>
+				<li>
+					<a href="http://georss.org/blog/" class="external text" title="http://georss.org/blog/" rel="nofollow">GeoRSS Blog</a>
+				</li>
+				<li>
+					<a href="http://delicious.com/tag/georss" class="external text" title="http://delicious.com/tag/georss" rel="nofollow">GeoRSS on delicious</a>
+				</li>
+				<li>
+					<a href="http://www.facebook.com/pages/Mapping-GeoRSS/180355311999239" class="external text" title="http://www.facebook.com/pages/Mapping-GeoRSS/180355311999239" rel="nofollow">Mapping GeoRSS on Facebook</a>
+				</li>
+				<li>
+					<a href="http://landsurveyorsunited.com/page/surveyors-georss" class="external text" title="http://landsurveyorsunited.com/page/surveyors-georss" rel="nofollow">Land Surveying GeoRSS on Land Surveyors United</a>
+				</li>
+				<li>
+					<a href="http://woodala.com/" class="external text" title="http://woodala.com/" rel="nofollow">Carpool Rideshare GeoRSS on Woodala Rideshare</a> <a href="http://www.torideshare.woodala.com/georss.php" class="external text" title="http://www.torideshare.woodala.com/georss.php" rel="nofollow">GeoRSS been used</a>
+				</li>
+			</ul><a name="Other_Community_Formats" id="Other_Community_Formats"></a>
+			<h1>
+				<span class="editsection">[<a href="/index.php?title=Main_Page&amp;action=edit&amp;section=2" title="Edit section: Other Community Formats">edit</a>]</span> <span class="mw-headline">Other Community Formats</span>
+			</h1>
+			<ul>
+				<li>
+					<a href="http://geojson.org" class="external text" title="http://geojson.org" rel="nofollow">GeoJSON</a>
+				</li>
+				<li>
+					<a href="http://microformats.org" class="external text" title="http://microformats.org" rel="nofollow">Microformats</a>
+				</li>
+			</ul>
+	</body>
 </html>
