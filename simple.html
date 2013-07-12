@@ -1,6 +1,17 @@
----
----
-{% include header.html title="Simple GeoRSS" %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<title>GeoRSS Simple</title>
+<link href="global.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<h4>GeoRSS ::<br/>Geographically Encoded Objects for RSS feeds</h4>
+<div class="nav"><a href="index.html">home</a> | <a href="overview.html">overview</a> | <a href="model.html">model</a><br/>
+<a href="gml.html">gml</a> | <a href="simple.html">simple</a> | <a href="w3c.html">W3C Geo</a><br/>
+<a href="atom.html">atom</a> | <a href="rdf_rss1.html">rdf/rss1</a> | <a href="/blog">blog</a></div>
+
+<h2>GeoRSS Simple</h2>
 
 <p>The Simple serialization of GeoRSS is designed to be maximally concise, in both representation and conception. Each of the four GeoRSS objects require only a single tag.</p>
 
@@ -14,29 +25,30 @@
 
 <h3> Point</h3>
 <p>A point contains a single latitude-longitude pair, separated by whitespace. </p>
-{% highlight xml %}
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" 
-      xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml"
-   <title>Earthquakes</title>
-   <subtitle>International earthquake observation labs</subtitle>
-   <link href="http://example.org/"/>
-   <updated>2005-12-13T18:30:02Z</updated>
-   <author>
-      <name>Dr. Thaddeus Remor</name>
-      <email>tremor@quakelab.edu</email>
-   </author>
-   <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
-   <entry>
-      <title>M 3.2, Mona Passage</title>
-      <link href="http://example.org/2005/09/09/atom01"/>
-      <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a</id>
-      <updated>2005-08-17T07:02:32Z</updated>
-      <summary>We just had a big one.</summary>
-      <georss:point>45.256 -71.92</georss:point>
-      </entry>
-</feed>
-{% endhighlight %}
+<blockquote>
+  <pre style="z-index: 3;"><span>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;feed xmlns="http://www.w3.org/2005/Atom" 
+<strong>      xmlns:georss="http://www.georss.org/georss</strong>&quot; 
+      <span><strong>xmlns:gml="http://www.opengis.net/gml</strong>&quot;</span>&gt;</span>
+   &lt;title&gt;Earthquakes&lt;/title&gt;
+   &lt;subtitle&gt;International earthquake observation labs&lt;/subtitle&gt;
+   &lt;link href="http://example.org/"/&gt;
+   &lt;updated&gt;2005-12-13T18:30:02Z&lt;/updated&gt;
+   &lt;author&gt;
+      &lt;name&gt;Dr. Thaddeus Remor&lt;/name&gt;
+      &lt;email&gt;tremor@quakelab.edu&lt;/email&gt;
+   &lt;/author&gt;
+   &lt;id&gt;urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6&lt;/id&gt;
+   &lt;entry&gt;
+      &lt;title&gt;M 3.2, Mona Passage&lt;/title&gt;
+      &lt;link href="http://example.org/2005/09/09/atom01"/&gt;
+      &lt;id&gt;urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a&lt;/id&gt;
+      &lt;updated&gt;2005-08-17T07:02:32Z&lt;/updated&gt;
+      &lt;summary&gt;We just had a big one.&lt;/summary&gt;
+<span>      <strong>&lt;georss:point&gt;45.256 -71.92&lt;/georss:point&gt;
+      </strong></span>&lt;<span>/entry&gt;
+&lt;/feed&gt;</span></pre>
+</blockquote>
 
 <h3> Line</h3>
 <p>A line contains a space seperated list of latitude-longitude pairs, with each pair separated by whitespace. There must be at least two pairs.</p>
@@ -100,4 +112,10 @@
     <b>&lt;georss:radius&gt;500&lt;/georss:radius&gt;</b>
 </pre>
 </blockquote>
-<!--#include virtual="footer.html"-->
+
+<h3>GeoRSS Application Schema</h3>
+
+<p>The application schema defines &lt;georss:where&gt; as the tag that signals geographic content--either in GeoRSS Simple or GML.</p>
+<p><a href="http://www.georss.org/xml/1.1/georss.xsd">Here is our GeoRSS Application Schema</a>.</p>
+</body>
+</html>
