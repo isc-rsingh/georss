@@ -1,0 +1,263 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<title>GeoRSS Proposals</title>
+<link href="global.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<h4>GeoRSS ::<br/>Geographically Encoded Objects for RSS feeds</h4>
+<div class="nav"><a href="index.html">home</a> | <a href="overview.html">overview</a> | <a href="model.html">model</a><br/>
+<a href="gml.html">gml</a> | <a href="simple.html">simple</a> | <a href="w3c.html">W3C Geo</a><br/>
+<a href="atom.html">atom</a> | <a href="rdf_rss1.html">rdf/rss1</a> | <a href="/blog">blog</a></div>
+
+<h2>GeoRSS Proposals</h2>
+
+<p>GeoRSS is an open (as in speech) and evolving standard. Anyone is free to submit proposals for extensions or modifications of the standard.</p>
+
+<p>To submit a proposal, first create an account and login. Then create a new page stating your proposal, its intended use and example use case, and some example format snippets.</p>
+
+<p>After an initial discussion period the proposal will go up for vote by all members of the GeoRSS community. If the proposal passes by a simple majority then the proposed modification will be adopted into the next version of GeoRSS.</p>
+
+<h3>Referencing External Geometries</h3>
+<span class="mw-headline">Use cases</span></h2>
+<ol><li> Often-updated feeds in which entries almost always refer to the same set of semi-static, and possibly complex, locations such as administrative regions. The overall application is improved by not fetching and parsing redundant literal geometry elements.
+</li><li> Linking to locations from HTML. Foreign markup isn't welcomed by web browsers, and HTML5 doesn't welcome RDFa, so one must link to locations in other documents.
+</li></ol>
+<a name="Possibilities"></a><h2><span class="editsection"><span class="mw-headline">Possibilities</span></h2>
+<p>Note: previous source wasn't coherent, so has been removed for now. Add back in as required. --<a href="/index.php?title=User:Sgillies&amp;action=edit&amp;redlink=1" class="new" title="User:Sgillies (not yet written)">Sgillies</a> 21:03, 29 April 2009 (UTC)
+</p><p>There's at least two ways to go: use of Atom/HTML links (which better serves the second use case), or use of an optional URI attribute in the georss:where element ala HTML &lt;script&gt; or atom:content (which better serves the first use case).
+</p>
+<a name="Atom_and_HTML_links"></a><h3><span class="editsection"><span class="mw-headline">Atom and HTML links</span></h3>
+<p>Would require standardization of a rel type such as "where" (for HTML) or "<a href="http://georss.org/relation/where" class="external free" title="http://georss.org/relation/where" rel="nofollow">http://georss.org/relation/where</a>" for Atom:
+</p>
+<div dir="ltr" style="text-align: left;"><div class="source-xml" style="font-family: monospace;"><pre><span class="co3">...
+</span><span class="re1">&lt;link</span>
+  <span class="re0">rel</span>=<span class="st0">"where"</span>
+  <span class="re0">type</span>=<span class="st0">"application/atom+xml;type=entry"</span>
+  <span class="re0">href</span>=<span class="st0">"http://pleiades.stoa.org/places/639166.atom#location"</span>
+  <span class="re2">/&gt;</span><span class="co3">
+...</span></pre></div></div>
+<p>And then we'd have to nail down the semantics of "where". Would we want to refer only to georss:where elements within other XML documents using XML ids? Use KML/GML/JSON too?
+</p>
+<a name="External_source_for_georss:where"></a><h3><span class="editsection"><span class="mw-headline">External source for georss:where</span></h3>
+<p>More or less like HTML's &lt;script&gt; tag:
+</p>
+<div dir="ltr" style="text-align: left;"><div class="source-xml" style="font-family: monospace;"><pre><span class="co3">...
+</span><span class="re1">&lt;georss:where</span> <span class="re0">src</span>=<span class="st0">"http://pleiades.stoa.org/places/639166.atom#location"</span><span class="re2">&gt;</span>
+  <span class="co1">&lt;!-- empty, filled in by fetching doc from src URI --&gt;</span>
+<span class="re1">&lt;/georss:where<span class="re2">&gt;</span></span><span class="co3">
+...</span></pre></div></div>
+<p>In this case, we'd only accept georss:where markup.
+</p>
+
+<h3>Multiple Locations</h3>
+Use Cases </span></h2>
+<a name="News_article_with_multiple_locations"></a><h3><span class="editsection"><span class="mw-headline"> News article with multiple locations </span></h3>
+<p>Comment: I don't think locations mentioned in the news are always as compelling as we think. Consider this story about new federal appointee who wants to employ statistical methods to the census: <a href="http://www.nytimes.com/2009/04/03/washington/03census.html" class="external free" title="http://www.nytimes.com/2009/04/03/washington/03census.html" rel="nofollow">http://www.nytimes.com/2009/04/03/washington/03census.html</a>. There are 7 locations mentioned in the article:
+</p>
+<ul><li> Washington (filed from)
+</li><li> Michigan (university of)
+</li><li> Ohio (represented by Boehner)
+</li><li> California (represented by Issa)
+</li><li> New Hampshire (represented by Gregg)
+</li><li> United States (appointee lived in)
+</li><li> Vermont (appointee previously employed in)
+</li></ul>
+<p>None of these locations are very relevant to the story. GeoRSS'ing them in a feed item would geo-spam readers. The producers of the NYT feed, appropriately, gave it no geographic categorization at all. One location per entry is probably the most useful thing a feed producer can do. More locations require more semantics.--<a href="/index.php?title=User:Sgillies&amp;action=edit&amp;redlink=1" class="new" title="User:Sgillies (not yet written)">Sgillies</a> 19:51, 29 April 2009 (UTC)
+</p><p>I'd disagree re relevance of story. If you are from one of the locations mentioned in the article, e.g. Ann Arbor, MI, the fact that someone from the University of Michigan is mentioned in a story is very relevant if you're pulling in a localized feed. I agree that at some level this is geo-spam, but that's a problem for editorial and post-production not data design. <a href="/User:Edward_Vielmetti" title="User:Edward Vielmetti">Edward Vielmetti</a> 03:31, 3 May 2009 (UTC)
+</p>
+<a name="Sensor_report_that_has_a_multi-geometry"></a><h3><span class="editsection"><span class="mw-headline"> Sensor report that has a multi-geometry </span></h3>
+<p>Comment: An specific example of such sensor reports is necessary, since we usually try to measure fields at points in space, or at points along horizontal transects and/or vertical profiles. A temperature or pressure value with multiple locations makes little sense. --<a href="/index.php?title=User:Sgillies&amp;action=edit&amp;redlink=1" class="new" title="User:Sgillies (not yet written)">Sgillies</a> 19:51, 29 April 2009 (UTC)
+</p>
+<a name="Suggested_Solutions"></a><h2><span class="editsection"><span class="mw-headline"> Suggested Solutions </span></h2>
+<a name="multiple_locations_per_item"></a><h3><span class="editsection"><span class="mw-headline"> multiple locations per item </span></h3>
+<div dir="ltr" style="text-align: left;"><div class="source-xml" style="font-family: monospace;"><pre><span class="re1">&lt;item<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;title<span class="re2">&gt;</span></span><span class="co3">..</span><span class="re1">&lt;/title<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;link<span class="re2">&gt;</span></span><span class="co3">http://...</span><span class="re1">&lt;/link<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;category<span class="re2">&gt;</span></span><span class="co3">..</span><span class="re1">&lt;/category<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;pubDate<span class="re2">&gt;</span></span><span class="co3">..</span><span class="re1">&lt;/pubDate<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;description<span class="re2">&gt;</span></span><span class="co3">...</span><span class="re1">&lt;/description<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;georss:point<span class="re2">&gt;</span></span><span class="co3">[coordinate pair]</span><span class="re1">&lt;/georss:point<span class="re2">&gt;</span></span> <span class="re1">&lt;</span>!—fire origin location --<span class="re2">&gt;</span>
+  <span class="re1">&lt;georss:polygon</span><span class="br0">[</span>coordinate pairs<span class="br0">]</span><span class="re1">&lt;/georss:polygon<span class="re2">&gt;</span></span> <span class="re1">&lt;</span>!—first burn area --<span class="re2">&gt;</span>
+  <span class="re1">&lt;georss:polygon</span><span class="br0">[</span>coordinate pairs<span class="br0">]</span><span class="re1">&lt;/georss:polygon<span class="re2">&gt;</span></span> <span class="re1">&lt;</span>!—second burn area --<span class="re2">&gt;</span> 
+    <span class="co1">&lt;!-- (distinct from first area, however relating to the same fire incident, such as a spot fire) --&gt;</span>
+  <span class="re1">&lt;georss:polygon<span class="re2">&gt;</span></span><span class="co3">[coordinate pairs]</span><span class="re1">&lt;/georss:polygon<span class="re2">&gt;</span></span> <span class="re1">&lt;</span>!—third burn area --<span class="re2">&gt;</span>
+  <span class="re1">&lt;georss:polygon</span><span class="br0">[</span>coordinate pairs<span class="br0">]</span><span class="re1">&lt;/georss:polygon<span class="re2">&gt;</span></span> <span class="re1">&lt;</span>!—fourth burn area --<span class="re2">&gt;</span>
+<span class="re1">&lt;/item<span class="re2">&gt;</span></span></pre></div></div>
+<p>Comment: Too dependent on undefined semantics. This won't fly. Better to use one polygon that envelopes everything, then put a more detailed serialization of data from your wildfire model in atom:content. --<a href="/index.php?title=User:Sgillies&amp;action=edit&amp;redlink=1" class="new" title="User:Sgillies (not yet written)">Sgillies</a> 19:33, 29 April 2009 (UTC)
+</p>
+<a name="more_entries"></a><h3><span class="editsection"><span class="mw-headline"> more entries </span></h3>
+<p><a href="http://zcologia.com/news/711/multiple-locations-in-georss/" class="external text" title="http://zcologia.com/news/711/multiple-locations-in-georss/" rel="nofollow">Sean Gillies</a> made this counter-proposal The premise is that you create a single primary entry that contains the story, bounding box of locations or primary location (or no locations). Then, using atom:link with rel's, append multiple additional entries per each location or event. The rel points back to the primary article (that this is a comment or related to) and can then include snippet, author, time, and locations.
+</p><p>The benefit of this mechanism is that it currently works within the existing spec, so nothing "new" is added, it is just a suggested way of handling multiple locations. Additionally, there is the ability to include more information for each snippet such as time spans, categories, excerpts, etc. without GeoRSS having to extend and add all those as necessary.
+</p><p>The potential detriment is that to "vanilla" readers a single story could show up as multiple stories: the primary and each excerpt.
+</p>
+<div dir="ltr" style="text-align: left;"><div class="source-xml" style="font-family: monospace;"><pre><span class="re1">&lt;feed</span>
+  <span class="re0">xmlns</span>=<span class="st0">"http://www.w3.org/2005/Atom"</span>
+  <span class="re0">xmlns:georss</span>=<span class="st0">"http://www.georss.org/georss"</span>
+  <span class="re0">xmlns:gml</span>=<span class="st0">"http://www.opengis.net/gml"</span>
+  <span class="re2">&gt;</span>
+  <span class="re1">&lt;entry<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;id<span class="re2">&gt;</span></span><span class="co3">urn:uuid:7e8ee974-9181-4eae-ad65-55d29175d942</span><span class="re1">&lt;/id<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;link</span> <span class="re0">href</span>=<span class="st0">"http://example.org/entries/1"</span><span class="re2">/&gt;</span>
+    <span class="re1">&lt;title<span class="re2">&gt;</span></span><span class="co3">Cedarburg Trip</span><span class="re1">&lt;/title<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;summary<span class="re2">&gt;</span></span><span class="co3">We went to visit downtown Cedarburg before the
+    conference. Had some great sandwiches at Joe's. If you
+    haven't been to Cedarburg, Wisconsin, then you haven't
+    really experienced the MidWest...</span><span class="re1">&lt;/summary<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;content</span> <span class="re0">type</span>=<span class="st0">"html"</span> <span class="re0">src</span>=<span class="st0">"http://example.org/entries/1"</span><span class="re2">/&gt;</span>
+  <span class="re1">&lt;/entry<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;entry<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;id<span class="re2">&gt;</span></span><span class="co3">urn:uuid:53664db3-4598-45d4-a727-022c6203322e</span><span class="re1">&lt;/id<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;link</span> <span class="re0">rel</span>=<span class="st0">"related"</span> <span class="re0">href</span>=<span class="st0">"http://example.org/entries/1"</span><span class="re2">/&gt;</span>
+    <span class="re1">&lt;title<span class="re2">&gt;</span></span><span class="co3">Downtown Cedarburg, Wis.</span><span class="re1">&lt;/title<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;summary<span class="re2">&gt;</span></span><span class="co3">Went to visit downtown Cedarburg...</span><span class="re1">&lt;/summary<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;georss:where<span class="re2">&gt;</span></span>
+      <span class="re1">&lt;gml:Point<span class="re2">&gt;</span></span>
+        <span class="re1">&lt;gml:pos<span class="re2">&gt;</span></span><span class="co3">43.296700 -87.98750</span><span class="re1">&lt;/gml:pos<span class="re2">&gt;</span></span>
+      <span class="re1">&lt;/gml:Point<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;/georss:where<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;/entry<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;entry<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;id<span class="re2">&gt;</span></span><span class="co3">urn:uuid:2528d1b4-b5a9-415c-be69-f83974e3e6af</span><span class="re1">&lt;/id<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;link</span> <span class="re0">rel</span>=<span class="st0">"related"</span> <span class="re0">href</span>=<span class="st0">"http://example.org/entries/1"</span><span class="re2">/&gt;</span>
+    <span class="re1">&lt;title<span class="re2">&gt;</span></span><span class="co3">Convention Center</span><span class="re1">&lt;/title<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;georss:where<span class="re2">&gt;</span></span>
+      <span class="re1">&lt;gml:LineString<span class="re2">&gt;</span></span>
+        <span class="re1">&lt;gml:posList<span class="re2">&gt;</span></span><span class="co3">43.296700 -87.987500 43.3 -88 -44 -89</span><span class="re1">&lt;/gml:posList<span class="re2">&gt;</span></span>
+      <span class="re1">&lt;/gml:LineString<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;/georss:where<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;/entry<span class="re2">&gt;</span></span>
+<span class="re1">&lt;/feed<span class="re2">&gt;</span></span></pre></div></div>
+<p>Perhaps better yet: treat geographic annotation as commentary on the original entry using <a href="http://tools.ietf.org/html/rfc4685" class="external" title="http://tools.ietf.org/html/rfc4685">RFC 4685</a>, the Atom Threading Extension:
+</p>
+<div dir="ltr" style="text-align: left;"><div class="source-xml" style="font-family: monospace;"><pre><span class="re1">&lt;feed</span>
+  <span class="re0">xmlns</span>=<span class="st0">"http://www.w3.org/2005/Atom"</span>
+  <span class="re0">xmlns:georss</span>=<span class="st0">"http://www.georss.org/georss"</span>
+  <span class="re0">xmlns:gml</span>=<span class="st0">"http://www.opengis.net/gml"</span>
+  <span class="re0">xmlns:thr</span>=<span class="st0">"http://purl.org/syndication/thread/1.0"</span>
+  <span class="re2">&gt;</span>
+  <span class="re1">&lt;entry<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;id<span class="re2">&gt;</span></span><span class="co3">urn:uuid:7e8ee974-9181-4eae-ad65-55d29175d942</span><span class="re1">&lt;/id<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;link</span> <span class="re0">href</span>=<span class="st0">"http://example.org/entries/1"</span><span class="re2">/&gt;</span>
+    <span class="re1">&lt;title<span class="re2">&gt;</span></span><span class="co3">Cedarburg Trip</span><span class="re1">&lt;/title<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;summary<span class="re2">&gt;</span></span><span class="co3">We went to visit downtown Cedarburg before the
+    conference. Had some great sandwiches at Joe's. If you
+    haven't been to Cedarburg, Wisconsin, then you haven't
+    really experienced the MidWest...</span><span class="re1">&lt;/summary<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;content</span> <span class="re0">type</span>=<span class="st0">"application/xhtml+xml"</span> <span class="re0">src</span>=<span class="st0">"http://example.org/entries/1"</span><span class="re2">/&gt;</span>
+  <span class="re1">&lt;/entry<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;entry<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;id<span class="re2">&gt;</span></span><span class="co3">urn:uuid:53664db3-4598-45d4-a727-022c6203322e</span><span class="re1">&lt;/id<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;link</span> <span class="re0">rel</span>=<span class="st0">"related"</span> <span class="re0">href</span>=<span class="st0">"http://example.org/entries/1"</span><span class="re2">/&gt;</span>
+&nbsp;
+    <span class="re1">&lt;thr:in-reply-to</span>
+      <span class="re0">ref</span>=<span class="st0">"urn:uuid:7e8ee974-9181-4eae-ad65-55d29175d942"</span>
+      <span class="re0">type</span>=<span class="st0">"application/xhtml+xml"</span>
+      <span class="re0">href</span>=<span class="st0">"http://www.example.org/entries/1"</span>
+      <span class="re2">/&gt;</span>
+&nbsp;
+    <span class="re1">&lt;title<span class="re2">&gt;</span></span><span class="co3">Downtown Cedarburg, Wis.</span><span class="re1">&lt;/title<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;summary<span class="re2">&gt;</span></span><span class="co3">Went to visit downtown Cedarburg...</span><span class="re1">&lt;/summary<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;georss:where<span class="re2">&gt;</span></span>
+      <span class="re1">&lt;gml:Point<span class="re2">&gt;</span></span>
+        <span class="re1">&lt;gml:pos<span class="re2">&gt;</span></span><span class="co3">43.296700 -87.98750</span><span class="re1">&lt;/gml:pos<span class="re2">&gt;</span></span>
+      <span class="re1">&lt;/gml:Point<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;/georss:where<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;/entry<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;entry<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;id<span class="re2">&gt;</span></span><span class="co3">urn:uuid:2528d1b4-b5a9-415c-be69-f83974e3e6af</span><span class="re1">&lt;/id<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;link</span> <span class="re0">rel</span>=<span class="st0">"related"</span> <span class="re0">href</span>=<span class="st0">"http://example.org/entries/1"</span><span class="re2">/&gt;</span>
+&nbsp;
+    <span class="re1">&lt;thr:in-reply-to</span>
+      <span class="re0">ref</span>=<span class="st0">"urn:uuid:7e8ee974-9181-4eae-ad65-55d29175d942"</span>
+      <span class="re0">type</span>=<span class="st0">"application/xhtml+xml"</span>
+      <span class="re0">href</span>=<span class="st0">"http://www.example.org/entries/1"</span>
+      <span class="re2">/&gt;</span>
+&nbsp;
+    <span class="re1">&lt;title<span class="re2">&gt;</span></span><span class="co3">Convention Center</span><span class="re1">&lt;/title<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;georss:where<span class="re2">&gt;</span></span>
+      <span class="re1">&lt;gml:LineString<span class="re2">&gt;</span></span>
+        <span class="re1">&lt;gml:posList<span class="re2">&gt;</span></span><span class="co3">43.296700 -87.987500 43.3 -88 -44, -89</span><span class="re1">&lt;/gml:posList<span class="re2">&gt;</span></span>
+      <span class="re1">&lt;/gml:LineString<span class="re2">&gt;</span></span>
+    <span class="re1">&lt;/georss:where<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;/entry<span class="re2">&gt;</span></span>
+<span class="re1">&lt;/feed<span class="re2">&gt;</span></span></pre></div></div>
+<p>This approach could easily accommodate the desire of some producers to explicitly add locations for everything they can geocode in their content.
+</p>
+<a name="georss:collection"></a><h3><span class="editsection"><span class="mw-headline"> georss:collection </span></h3>
+<div dir="ltr" style="text-align: left;"><div class="source-xml" style="font-family: monospace;"><pre><span class="re1">&lt;description<span class="re2">&gt;</span></span><span class="co3">
+We went to visit downtown Cedarburg before the conference. Had some 
+great sandwiches at Joe's. If you haven't been to Cedarburg, Wisconsin, 
+then you haven't really experienced the MidWest...
+</span><span class="re1">&lt;/description<span class="re2">&gt;</span></span>
+&nbsp;
+<span class="re1">&lt;georss:collection<span class="re2">&gt;</span></span>
+	<span class="re1">&lt;georss:point</span> <span class="re0">excerpt</span>=<span class="st0">"Went to visit downtown Cedarburg..."</span> 
+		<span class="re0">featurename</span>=<span class="st0">"Downtown Cedarburg, Wis."</span><span class="re2">&gt;</span><span class="co3">
+			43.296700 -87.987500
+	</span><span class="re1">&lt;/georss:point<span class="re2">&gt;</span></span>
+	<span class="re1">&lt;georss:polygon</span> <span class="re0">rel</span>=<span class="st0">"geometry"</span> 
+		<span class="re0">src</span>=<span class="st0">"http://geonames.org/geometries/5867680"</span> 
+		<span class="re0">excerpt</span>=<span class="st0">"..."</span> 
+		<span class="re0">featurename</span>=<span class="st0">"Cedarburg, Wisconsin"</span> 
+		<span class="re0">type</span>=<span class="st0">"application/vnd.google-earth.kml+xml"</span><span class="re2">/&gt;</span>
+	<span class="re1">&lt;georss:line</span> <span class="re0">featurename</span>=<span class="st0">"Convention Center"</span><span class="re2">&gt;</span><span class="co3">
+		43.296700 -87.987500 43.3 -88 -44, -89
+	</span><span class="re1">&lt;/georss:point<span class="re2">&gt;</span></span>	
+<span class="re1">&lt;/georss:collection<span class="re2">&gt;</span></span></pre></div></div>
+<p>The first part to notice is that we wrapped the multiple geometries in a georss:collection. This allows current parsers to not be confused by encountering multiple georss elements unwrapped and being unclear if they are multiple representations of the same geometry, or different geometries.
+</p><p>We also included a excerpt attribute that allows you to include some text referencing what this location is specifically about. This can be text from the article itself, or some other useful information. One concept we had considered was using some reference to the text wrapped in the article itself, but this seemed burdensome and prone to problems using an attribute of one element to embedded text in another element.
+</p><p>The second element is a georss:polygon that includes a src reference to the geometry stored elsewhere. The rel tag specifies that it is the geometry of this element, and the type helps the tool know what the representation is of the stored geometry. This way a tool that is consuming the GeoRSS can go and fetch the geometry if it wants, or if it already has a cached version, say referenced elsewhere in this same feed, then it doesn't have to request it again.
+</p><p>Of course, with a standards development, it is useful to consider how a user interface might provide for including multiple locations in an entry. Here is a mockup of how I imagine a simple interface would appear, and probably how we'd implement it in GeoPress:
+</p><p>Article:We went to visit downtown Cedarburg before the conference. Had some great sandwiches at Joe's. If you haven't been to Cedarburg, Wisconsin, then you haven't really experienced the MidWest...
+</p><p>Locations:
+- Excerpt: Went to visit downtown Cedarburg...
+- Type: Point
+- Geometry: 43.296700 -87.987500
+- Name: Cedarburg, Wis.
+</p><p>Comment: Adding a "featurename" attribute to these locations is confusing. After all, the entry is the feature. The text excerpts are superfluous, this is what the entry summary is for. Better, I think to leave multipart geometries out of the simple GeoRSS, and encourage users to use GML multipoints (etc) in a georss:where element. --<a href="/index.php?title=User:Sgillies&amp;action=edit&amp;redlink=1" class="new" title="User:Sgillies (not yet written)">Sgillies</a> 20:13, 29 April 2009 (UTC)
+</p>
+<h3>Multi-Polygons Type</h3>
+<p>This page is meant to gather information on use cases and suggested solutions to provide support for multiple polygons per <b>story</b>, or feed entry.
+</p>
+<a name="Use_Cases"></a><h2><span class="editsection"><span class="mw-headline"> Use Cases </span></h2>
+<p>In several use cases it's necessary to use a multipolygon to define a location that is the aggregation of several polygons (MULTIPOLYGON)
+This is <b>not</b> an event in multiple locations, it's a item that has some kind of geometry <b>impossible</b> to draw in a single polygon
+</p><p>Some example of such non-continuous polygons are satellite data, landcover and other environmental data, some electoral districts in the US or municipalities in Portugal.
+</p><p><br>
+</p>
+<a name="Suggested_Solutions"></a><h2><span class="editsection"><span class="mw-headline"> Suggested Solutions </span></h2>
+<a name="Type_Multipolygon"></a><h3><span class="editsection"><span class="mw-headline"> Type Multipolygon </span></h3>
+<p>Allow the definition of the attribute type with the "multipolygon" as value in the where elements
+</p>
+<div dir="ltr" style="text-align: left;"><div class="source-xml" style="font-family: monospace;"><pre><span class="re1">&lt;georss:where</span> <span class="re0">type</span>=<span class="st0">"multipolygon"</span><span class="re2">&gt;</span>
+  <span class="re1">&lt;georss:polygon<span class="re2">&gt;</span></span><span class="co3">...</span><span class="re1">&lt;/georss:polygon<span class="re2">&gt;</span></span>
+  <span class="re1">&lt;georss:polygon<span class="re2">&gt;</span></span><span class="co3">...</span><span class="re1">&lt;/georss:polygon<span class="re2">&gt;</span></span>
+<span class="re1">&lt;/georss:where<span class="re2">&gt;</span></span></pre></div></div>
+  <!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+</p>
+<!--#include virtual="footer.html"-->
+</body>
+</html>

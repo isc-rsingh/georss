@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Referencing External Geometry with Atom link</title>
+</head>
+
+<body>
+
+<!-- http://georss.org/node/31 -->
+
+<p>Referencing External Geometry Proposal with Atom link</p>
+
+<p><strong>Pain point: </strong>It's inefficient to have the potentially copious XML for  places repeated over and over again. For example, it makes sense to refer to a common repository of country boundaries, rather than have everyone figure them out on their own.</p>
+<p><strong>Solution:</strong> Use &lt;atom:link&gt; to reference the geometry.</p>
+<p><strong>Notes:</strong></p>
+<ol>
+   <li>To reference an element within an XML document instead of the entire document, first give the XML element you want to reference an id, then reference it from &lt;atom:link&gt; using the format for referencing an anchor (see Example 3).</li>
+   <li><em> Even though the GeoRSS community is mainly into Atom, this solution works for RSS1 and RSS2 as well. Just import the Atom namespace and implement the semantics properly.</em></li>
+</ol>
+<p>Example 1 – reference to GeoRSS Simple geometry in an Atom entry</p>
+<pre>&lt;entry&gt;
+   ...
+   &lt;link 
+      rel=&quot;http://ww.georss.org/relations/location&quot;
+      type=&quot;application/georss-simple+xml&quot;
+      href=&quot;http://example.com/us/state/ma/mass_boundary.xml&quot; /&gt;
+&lt;/entry&gt;</pre>
+
+
+<p>Example 2 – reference to GeoRSS GML geometry in an Atom entry</p>
+<pre>&lt;entry&gt;
+   ...
+   &lt;georss:where&gt;
+      &lt;link 
+         rel=&quot;http://ww.georss.org/relations/location&quot;
+         type=&quot;application/vnd.ogc.gml&quot;
+         href=&quot;http://example.com/us/state/ma/mass_boundary.gml&quot; /&gt;
+   &lt;/georss:where&gt;
+&lt;/entry&gt;</pre>
+
+<p>Example 3 – reference to a child element in a GeoRSS GML document from within an Atom entry</p>
+<pre>&lt;entry&gt;
+   ...
+   &lt;georss:where&gt;
+      &lt;link 
+         rel=&quot;http://ww.georss.org/relations/location&quot;
+         type=&quot;application/vnd.ogc.gml&quot;
+         href=&quot;http://example.com/us/state/ma/mass.gml#cambridge&quot; /&gt;
+   &lt;/georss:where&gt;
+&lt;/entry&gt;</pre>
+
+
+
+</body>
+</html>

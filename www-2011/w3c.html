@@ -1,0 +1,47 @@
+<!--#set var="title" value="W3C Basic Geo Vocabulary"-->
+<!--#include virtual="header.html"-->
+
+<p>
+The W3C <a href="http://www.w3.org/2003/01/geo/">Basic Geo Vocabulary</a> is a RDF vocabulary for representing the latitude and longitude of spatially-located things. It is widely used within RDF documents, as well as a namespace within non-RDF XML documents, such as RSS 2.0 and Atom. There are myriad publishers, applications and services using the format. Its rapid uptake has been a significant motivation in devising the "georss" namespace.
+</p>
+<p>
+You are encouraged to utilize the GeoRSS Content Model and Encodings. However, W3C Geo has great inertia and will continue to be an important format. It is recommended that GeoRSS Parsers support W3C Geo. In time, the hope is that these two namespaces can be reconciled.
+</p>
+<p>
+The vocabulary defines a class 'Point', whose members are points. Points can be described using the 'lat' and 'long' properties.
+</p>
+<blockquote>
+<pre>
+&lt;geo:Point>
+  &lt;geo:lat>55.701&lt;/geo:lat>
+  &lt;geo:long>12.552&lt;/geo:long>
+&lt;/geo:Point>
+</pre>
+</blockquote>
+<p>
+In common usage, the containing Point is dropped, for brevity.
+</p>
+<blockquote>
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;rss version="2.0" <strong>xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"</strong>&gt;
+&lt;channel&gt;
+
+...
+
+&lt;item&gt;
+&nbsp;&lt;title&gt;An example annotation&lt;/title&gt;
+&nbsp;&lt;link&gt;http://example.com/geo&lt;/link&gt;
+&nbsp;&lt;description&gt;Just an example&lt;/description&gt;
+<strong>&nbsp;&lt;geo:lat&gt;26.58&lt;/geo:lat&gt;
+&nbsp;&lt;geo:long&gt;-97.83&lt;/geo:long&gt;</strong>
+&lt;/item&gt;
+
+...
+
+&lt;/channel&gt;
+&lt;/rss&gt;
+</pre>
+</blockquote>
+
+<!--#include virtual="footer.html"-->

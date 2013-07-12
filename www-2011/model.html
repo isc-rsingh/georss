@@ -1,0 +1,132 @@
+<!--#set var="title" value="GeoRSS model"-->
+<!--#include virtual="header.html"-->
+
+<a name="model"></a>
+<p><img src="graphics/georss-model.png" width="587" height="346" />
+<strong>
+<p align="center">Figure 1. - GeoRSS Model</p>
+</strong>
+
+<p>Figure 1 shows the UML model for GeoRSS. The left side of Figure 1 represents
+  GeoRSS, the right side represents the &quot;external&quot; content that GeoRSS is being
+used to describe. In the model, <strong>where</strong> is an association <em>of</em> a <strong>geometry</strong> to
+some
+  <strong>content</strong>. GeoRSS places no constraint on the type of content,
+  nor on its format.
+<p>GeoRSS itself is identified by a namespace, indicated by &quot;georss:&quot;.
+  The model above does not show, but allows, the inclusion of any other elements
+  from other
+  namespaces.
+<p>The model itself is an abstract concept. In order to use the model, it must
+  be expressed in a concrete form such as XML, RDF, etc. These expressions are
+  called <strong><a href="http://en.wikipedia.org/wiki/Serialization">serializations</a></strong>.
+<p>By allowing for the definition of multiple serializations, all of which conform
+  to the model, GeoRSS will provide the means of relating one serialization to
+  another. The goal is to also map the model to existing serializations where
+  possible.
+<p>The core concepts of GeoRSS are explained below. These concepts
+    are then encoded or serialized in
+    XML for use with <a href="#atomenc">Atom or RSS 2.0</a>. Alternate serializations
+    such as in RDF and XHTML are
+    also being developed.
+<h3>Coordinate reference system (CRS)</h3>
+<p>There aren't real grid lines or axes on the earth, so any GeoRSS coordinates
+  must refer to a <a href="https://portal.opengeospatial.org/files/?artifact_id=6716">coordinate
+  reference system</a> which has been defined and agreed to by geodesists and
+  software makers alike. The GeoRSS  CRS is the global (and GPS-preferred) <strong>WGS84,
+  latitude, longitude</strong> (in that order), using <strong>decimal degrees</strong>.
+   Note that GeoRSS
+  lines and boundaries are allowed to do things like cross the dateline or circle
+  the poles.</p>
+<h3>Geometry</h3>
+<p>The geometric shapes which can be used to represent location in GeoRSS
+  are <strong>point</strong>, <strong>line</strong>,
+  and <strong>boundary</strong>. </p>
+<p>A <strong>point</strong> contains a single coordinate pair. The coordinate pair contains a
+  latitude value and a longitude value<em> in that order</em>. The <em>preferred</em> serialization
+  of this uses a <em>space</em> to separate the two values.</p>
+<p>A <strong>line</strong> contains two or more coordinate pairs. Each pair contains
+  a latitude value and a longitude value<em> in that order</em>. The <em>preferred</em> serialization
+of this uses a <em>space</em> to separate the two values.  Pairs are  separated
+from each other
+by a <em>space</em>.</p>
+<p>A <strong>box</strong> contains exactly two coordinate pairs. Each
+  pair contains a latitude value and a longitude value<em> in that order</em>.
+  The <em>preferred</em> serialization of this uses a <em>space</em> to separate
+  the two values. Pairs are separated from each other
+by a <em>space</em>. The first coordinate pair (lower corner) must be a point
+further
+west and south of the second coordinate pair (upper corner) and the box is always
+interpreted
+as
+not
+containing the 180 (or -180) degree longitude line other than on its boundary
+and
+not
+containing
+the
+North
+or South pole other than on its boundary. A box <em>is generally</em> used to <em>roughly</em>demarcate
+an area within which other data lie.</p>
+<p align="center"><img src="graphics/gml_envelope.jpg" width="260" height="140" /></p>
+<p>A <strong>polygon</strong> contains at least four coordinate pairs. Each
+  pair contains a latitude value and a longitude value<em> in that order</em>.
+  The <em>preferred</em> serialization
+    of this uses a <em>space</em> to separate the two values. Pairs are separated
+    from each other
+  by a <em>space</em>. The last coordinate pair must be identical to the first.</p>
+<p align="center"><img src="graphics/179-rule.jpg" width="446" height="248" /></p>
+<p align="center"><strong>Figure 2. - 179 degree rule</strong></p>
+<p>Due to the fact that the Earth is round, we have to place some constraints
+  on the geometries to avoid ambiguous shapes. In order to be able to easily
+   represent the red box in Figure 2, where the left side of the box is at 160
+  degrees longitude and the right side of the box is at -175 degrees,<strong> no
+  two points in a line or polygon may have latitude values that are more than
+  179
+  degrees
+  apart</strong>. This constraint avoids other approaches that require either
+  additional information about the topology of the geometry or preclude the ability
+  to represen
+  geometries such as this. Since topology is beyond
+  the scope of this specification, it should not matter that you may have to
+  add
+  an extra point into your geometries. <strong>Line</strong> and <strong>polygon</strong> <strong>MUST</strong>  follow
+  this rule. <strong>Box</strong> does not.</p>
+<h3>Feature Type Tag</h3>
+<p>GeoRSS geometry is meant to represent a real feature of the Earth's surface.
+  The GeoRSS model allows for a single <em>string</em> containing a <strong>featuretypetag</strong>.
+  No constraints are placed on this string. The intent is to allow a Feature
+  Type <a href="http://en.wikipedia.org/wiki/Folksonomy">folksonomy</a>  to
+  emerge. The default is &quot;<strong>location&quot;</strong>.  </p>
+<h3>Relationship Tag</h3>
+<p>GeoRSS is a way of <em>relating</em> Web <strong>content</strong> to Earth <strong>features</strong>.
+  The GeoRSS model allows for a single string containing a <strong>relationshiptag</strong>.
+  No constraints are placed on this string. The intent is to allow a relationship <a href="http://en.wikipedia.org/wiki/Folksonomy">folksonomy</a> to
+  emerge.The default
+  relationship, &quot;<strong>is-located-at</strong>&quot; simply indicates that
+  the subject of the content<strong>  </strong>is located
+  at<strong> </strong> the
+  GeoRSS feature. </p>
+<h3>Elevation</h3>
+<p>In order to provide a means of expressing an elevation, the Simple form of
+  GeoRSS has two special tags. These tags are not meant to be used in the
+  GML version since elevation values would be properly expressed based in more
+  precise
+  terms. The tags are <strong>elev</strong> and <strong>floor</strong>.</p>
+<p><strong>elev</strong> is meant to contain &quot;common&quot; GPS elevation readings,
+  i.e. height in meters from the WGS84 ellipsoid, which is a reading that should
+  be easy to get from any GPS device.</p>
+<p><strong>floor</strong> is meant to contain the floor number of a building. In some countries
+  the numbering is different than in other countries, but since we'll know the
+  location of the building, it should be fairly unambiguous.</p>
+<p>&nbsp;</p>
+<!--<h2>Examples</h2>
+<p>Default Example: &ldquo;I go to the UPS Store {42.280297,-71.235639} a few times a week to pick up my mail.&rdquo; This means &ldquo;The subject of the text snippet (UPS Store) is located at a location represented by a position in WGS84 coordinates.&rdquo;</p>
+<p>Non-default Example: &ldquo;I go to the UPS Store {point, UTM Zone 19 4683318.0N 315659.72E, mailbox, is located at} a few times a week to pick up my mail.&rdquo; This means &ldquo;The subject of the text snippet (UPS Store) is located at a location represented by a point in WGS84 coordinates.&rdquo; </p>
+<h2>Constraints<a name="constraints"></a></h2>
+<p>When used in RSS, the &lt;Item&gt; tag can only contain one geo object. If your document has more than one geo object, then you should decide what the &lt;Item&gt; geo should be. Bounding box, center, etc.</p>
+-->
+</p> 
+<a href="atom.html">Next&gt;&gt;</a>
+
+<!--#include virtual="footer.html"-->

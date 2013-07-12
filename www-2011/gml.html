@@ -1,0 +1,316 @@
+<h2>GeoRSS GML</h2>
+
+<p><font size="-1"><em>Geography Markup Language (GML) is an XML grammar written in XML Schema for the modelling, transport, and storage of geographic information...GML provides a variety of kinds of objects for describing geography including features, coordinate reference systems, geometry, topology, time, units of measure and generalized values. A geographic feature is "an abstraction of a real world phenomenon; it is a geographic feature if it is associated with a location relative to the Earth?. So a digital representation of the real world can be thought of as a set of features.<br>
+- <a href="http://www.opengeospatial.org/groups/?iid=31">OGC GML Working Group</a></em></font></p>
+<p>Here we present the encoding of GeoRSS' objects in a simple <a href="http://portal.opengeospatial.org/files/?artifact_id=4700" target="_blank">GML version 3.1.1</a> profile. Each section details the construction of GeoRSS' five objects, followed by some informative use cases. As with all GeoRSS encodings, if not specified, the implied coordinate reference system is WGS84 with coordinates written in decimal degrees.</p>
+<p><a href="#gmlpoint">Point</a><br />
+  <a href="#gmline">Line</a><br />
+
+  <a href="#gmlboundary">Polygon</a><br />
+<a href="#gmlbox">Box</a><br />
+<a href="#examples">Examples</a><br />
+<a href="#gmlcrs">Coordinate Reference Systems</a><br />
+<a href="#gmlappschema">GML Application Schema</a></p>
+<p>&nbsp; </p>
+<h3><a name="gmlpoint" id="gmlpoint"></a>Point</h3>
+<p>A point consists of a <strong>&lt;Point&gt;</strong> element with a child <strong>&lt;coords&gt;</strong>
+
+element. Within<strong> &lt;coords&gt;</strong> the  latitude and longitude values
+are separated by a space. </p>
+<blockquote>
+  <pre style="z-index: 3;">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;feed xmlns="http://www.w3.org/2005/Atom" 
+<strong>      xmlns:georss="http://www.georss.org/georss</strong>&quot; 
+      <strong>xmlns:gml="http://www.opengis.net/gml</strong>&quot;&gt;
+   &lt;title&gt;Earthquakes&lt;/title&gt;
+
+   &lt;subtitle&gt;International earthquake observation labs&lt;/subtitle&gt;
+   &lt;link href="http://example.org/"/&gt;
+   &lt;updated&gt;2005-12-13T18:30:02Z&lt;/updated&gt;
+   &lt;author&gt;
+      &lt;name&gt;Dr. Thaddeus Remor&lt;/name&gt;
+      &lt;email&gt;tremor@quakelab.edu&lt;/email&gt;
+   &lt;/author&gt;
+   &lt;id&gt;urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6&lt;/id&gt;
+   &lt;entry&gt;
+      &lt;title&gt;M 3.2, Mona Passage&lt;/title&gt;
+      &lt;link href="http://example.org/2005/09/09/atom01"/&gt;
+      &lt;id&gt;urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a&lt;/id&gt;
+      &lt;updated&gt;2005-08-17T07:02:32Z&lt;/updated&gt;
+      &lt;summary&gt;We just had a big one.&lt;/summary&gt;
+
+      <strong>&lt;georss:where&gt;
+         &lt;<strong>gml:</strong>Point&gt;
+            &lt;<strong>gml:</strong>pos&gt;45.256 -71.92&lt;/<strong>gml:</strong>pos&gt;
+         &lt;/<strong><strong><strong>gml</strong></strong>:</strong>P<strong></strong>oint&gt;
+      &lt;/<strong>georss:</strong>where&gt;</strong>
+   &lt;/entry&gt;
+&lt;/feed&gt;</pre>
+</blockquote>
+
+<h3><a name="gmline"></a>Line</h3>
+<p>A line consists of a <strong>&lt;LineString&gt;</strong> element with a child <strong>&lt;coordList&gt;</strong> element.
+  Within <strong>&lt;coordList&gt;</strong> the coordinates of the points on the
+  line are entered as pairs of
+latitude and longitude values, separated by spaces. There must be at least two
+  pairs. No two pairs may be separated by more than 179 degrees in either latitude
+  or longitude.</p>
+
+<blockquote>
+  <pre>&lt;entry&gt;
+   ...
+   <strong>&lt;georss:where&gt;
+</strong><strong>      &lt;gml:LineString&gt;
+         &lt;gml:posList&gt;</strong>
+           <strong> 45.256 -110.45 46.46 -109.48 43.84 -109.86</strong>
+         <strong>&lt;/gml:posList&gt;
+      &lt;/gml:LineString&gt;</strong><strong>
+   &lt;/georss:where&gt;</strong>
+&lt;/entry&gt;</pre>
+</blockquote>
+
+<blockquote></blockquote>
+<h3><a name="gmlboundary" id="gmlboundary"></a>Polygon</h3>
+<p>A polygon consists of a <strong>&lt;Polygon&gt;</strong> element with a
+  child <strong>&lt;exterior&gt;</strong>, <strong>&lt;LinearRing&gt;</strong> and <strong>&lt;coordList&gt;</strong> elements.
+  There must be at least four pairs with the last being identical to the first.
+  (a boundary has a minimum of three actual points.) No two pairs may be separated
+  by more than 179 degrees in either latitude or longitude.</p>
+
+<blockquote>
+<pre>&lt;entry&gt;
+   ...
+   <strong>&lt;georss:where&gt;</strong><!--
+     &lt;gml:Polygon&gt;
+         &lt;gml:exterior&gt;-->
+      <strong>&lt;gml:Polygon&gt;
+         &lt;gml:exterior&gt;
+            &lt;gml:LinearRing&gt;
+               &lt;gml:posList&gt;</strong>
+            <strong>45.256 -110.45 46.46 -109.48 43.84 -109.86 45.256 -110.45</strong>
+               <strong>&lt;/gml:posList&gt;</strong>
+<strong>            &lt;/gml:LinearRing&gt;
+         &lt;/gml:exterior&gt;
+</strong>      <strong>&lt;/gml:Polygon&gt;</strong><!--
+         &lt;/gml:exterior&gt;
+      &lt;/gml:Polygon&gt;-->
+   <strong>&lt;/georss:where&gt;</strong>
+&lt;/entry&gt;
+</pre>
+</blockquote>
+<p><strong> &lt;Exterior&gt;</strong> specifies this shape as defining the outside of an area, and <strong>&lt;LinearRing&gt;</strong> states that the coordinates should be connected with straight lines. Within <strong>&lt;coordList&gt;</strong> the coordinates of the points  are entered as pairs of latitude and longitude values, separated by
+spaces. There must be at least four pairs with the last being identical to the first. (a polygon has a minimum of three actual points.) No two pairs may be separated by more than 179 degrees in either latitude or longitude.</p>
+
+<h3><a name="gmlbox" id="gmlbox"></a>Box</h3>
+
+<p>A bounding box defines a rectangular region. It is often used to define the extents of a map or define a rough area of interest. A GML box is called an Envelope. It consists of an <strong>&lt;Envelope&gt;</strong> element with a 
+  child <strong>&lt;lowerCorner&gt;</strong> element and a child <strong>&lt;upperCorner&gt;</strong> element.</p>
+<p align="center"><img src="graphics/gml_envelope.jpg" width="260" height="140" /></p>
+<blockquote>
+<pre>&lt;entry&gt;
+   ...
+   <strong>&lt;georss:where&gt;</strong><!--
+     &lt;gml:Polygon&gt;
+         &lt;gml:exterior&gt;-->
+      <strong>&lt;gml:Envelope&gt;
+         &lt;gml:lowerCorner&gt;42.943 -71.032&lt;/gml:lowerCorner&gt;<br />         &lt;gml:upperCorner&gt;43.039 -69.856&lt;/gml:upperCorner&gt;<br />      &lt;/gml:Envelope&gt;
+   &lt;/georss:where&gt;</strong>
+
+&lt;/entry&gt;
+</pre>
+  <p>&nbsp;</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h2><a name="examples" id="examples"></a>Examples</h2>
+<h3><a name="boathike" id="boathike"></a>Boat trip / hike (Atom)</h3>
+<p>A good way to describe a trip that has many places of interest like
+a boat trip or a hike is to specify the overall trip's path with a line
+as a child of the &lt;feed&gt;. Then mark each location of interest
+with a point in the &lt;entry&gt;.</p>
+
+<blockquote>
+<pre>&lt;feed xmlns="http://www.w3.org/2005/Atom" 
+<strong>      xmlns:georss="http://www.georss.org/georss&quot; 
+      <strong>xmlns:gml="http://www.opengis.net/gml</strong>&quot;</strong>&gt;
+   &lt;title&gt;Dino's Mt. Washington trip&lt;/title&gt;
+   &lt;link href="http://www.myisp.com/dbv/"/&gt;
+   &lt;updated&gt;2005-12-13T18:30:02Z&lt;/updated&gt;
+
+   &lt;author&gt;
+      &lt;name&gt;Dino Bravo&lt;/name&gt;
+      &lt;email&gt;dbv@example.org&lt;/email&gt;
+   &lt;/author&gt;
+   &lt;id&gt;http://www.myisp.com/dbv/&lt;/id&gt;
+
+   <strong>&lt;georss:where&gt;
+      &lt;<strong>gml:LineString</strong>&gt;
+         &lt;<strong>gml:pos</strong>List&gt;
+            45.256 -110.45 46.46 -109.48 43.84 -109.86 45.8 -109.2
+         &lt;/<strong>gml:pos</strong>List&gt;
+      &lt;/<strong><strong>gml:LineString</strong></strong>&gt;
+   &lt;/<strong>georss:</strong>where&gt;</strong>
+   &lt;entry&gt;
+      &lt;title&gt;Setting off&lt;/title&gt;
+      &lt;link href="http://www.myisp.com/dbv/1"/&gt;
+      &lt;id&gt;http://www.myisp.com/dbv/1&lt;/id&gt;
+      &lt;updated&gt;2005-08-17T07:02:32Z&lt;/updated&gt;
+      &lt;content&gt;getting ready to take the mountain!&lt;/content&gt;
+      <strong>&lt;georss:where&gt;
+         &lt;<strong>gml:Point</strong>&gt;
+            &lt;<strong>gml:pos</strong>&gt;45.256 -110.45&lt;/<strong>gml:pos</strong>&gt;
+         &lt;/<strong><strong>gml:Point</strong></strong>&gt;
+      &lt;/<strong>georss:</strong>where&gt;</strong>
+   &lt;/entry&gt;
+   &lt;entry&gt;
+      &lt;title&gt;Crossing Muddy Creek&lt;/title&gt;
+      &lt;link href="http://www.myisp.com/dbv/2"/&gt;
+      &lt;id&gt;http://www.myisp.com/dbv/2&lt;/id&gt;
+      &lt;updated&gt;2005-08-15T07:02:32Z&lt;/updated&gt;
+      &lt;content&gt;Check out the salamanders here&lt;/content&gt;
+
+      <strong>&lt;georss:where&gt;
+         &lt;<strong><strong>gml:Point</strong></strong>&gt;
+            &lt;<strong>gml:pos</strong>&gt;45.94 -74.377&lt;/<strong>gml:pos</strong>&gt;
+         &lt;/<strong><strong>gml:Point</strong></strong>&gt;
+      &lt;/<strong>georss:</strong>where&gt;</strong>
+
+   &lt;/entry&gt;
+&lt;/feed&gt;
+</pre>
+</blockquote>
+<h3><a name="eventscal" id="eventscal"></a>Calendar of events (Atom)</h3>
+<blockquote>
+<pre>&lt;feed xmlns="http://www.w3.org/2005/Atom" 
+<strong>      xmlns:georss="http://www.georss.org/georss</strong>&quot; 
+      <strong>xmlns:gml="http://www.opengis.net/gml</strong>&quot;&gt;
+   &lt;title&gt;Cambridge Calendar of Events&lt;/title&gt;
+
+   &lt;subtitle&gt;Goings on around Cambridge&lt;/subtitle&gt;
+   &lt;link href="http://example.org/"/&gt;
+   &lt;updated&gt;2005-12-13T18:30:02Z&lt;/updated&gt;
+   &lt;author&gt;
+      &lt;name&gt;Arty "the one man party" Collins&lt;/name&gt;
+      &lt;email&gt;apcollins@cambridgema.gov&lt;/email&gt;
+   &lt;/author&gt;
+   &lt;id&gt;http://www.cambridgema.gov/calendar&lt;/id&gt;
+   <strong>&lt;georss:where&gt;
+      &lt;<strong>gml:Polygon</strong>&gt;
+         &lt;gml:exterior&gt;&lt;gml:LinearRing&gt;
+             45.256 -110.45 46.46 -109.48 43.84 -109.86 
+             45.8 -109.2 45.256 -110.45
+         <strong><strong>&lt;/gml:LinearRing&gt;</strong></strong><strong>&lt;/gml:exterior&gt;</strong>
+      &lt;/<strong><strong>gml:Polygon</strong></strong>&gt;
+   &lt;/<strong>georss:</strong>where&gt;</strong>
+
+   &lt;entry&gt;
+      &lt;title&gt;City Council Meeting&lt;/title&gt;
+      &lt;link href="http://www.cambridgema.gov/calendar/2005/09/09/evt01"/&gt;
+      &lt;id&gt;http://www.cambridgema.gov/calendar/2005/09/09/evt01&lt;/id&gt;
+      &lt;updated&gt;2005-08-17T07:02:32Z&lt;/updated&gt;
+
+      &lt;content&gt;Regular weekly meeting&lt;/content&gt;
+      <strong>&lt;georss:where&gt;
+         &lt;<strong><strong><strong>gml:Point</strong></strong></strong>&gt;
+            &lt;<strong>gml:pos</strong>&gt;45.256 -110.45&lt;/<strong>gml:pos</strong>&gt;
+         &lt;/<strong><strong><strong>gml:Point</strong></strong></strong>&gt;
+      &lt;/<strong>georss:</strong>where&gt;</strong>
+   &lt;/entry&gt;
+   &lt;entry&gt;
+      &lt;title&gt;NoCa Arts Open House&lt;/title&gt;
+      &lt;link href="http://www.cambridgema.gov/calendar/2005/09/12/evt02"/&gt;
+      &lt;id&gt;http://www.cambridgema.gov/calendar/2005/09/12/evt02&lt;/id&gt;
+      &lt;updated&gt;2005-08-15T07:02:32Z&lt;/updated&gt;
+      &lt;content&gt;North Cambridge arts festival featuring local artists&lt;/content&gt;
+
+      <strong>&lt;georss:where&gt;
+         &lt;<strong><strong><strong>gml:Point</strong></strong></strong>&gt;
+            &lt;<strong>gml:pos</strong>&gt;45.94 -74.377&lt;/<strong>gml:pos</strong>&gt;
+         &lt;/<strong><strong><strong>gml:Point</strong></strong></strong>&gt;
+      &lt;/<strong>georss:</strong>where&gt;</strong>
+
+   &lt;/entry&gt;
+&lt;/feed&gt;
+</pre>
+</blockquote>
+
+<h3><a name="gmlcrs"></a>Coordinate Reference System Usage</h3>
+<p>A lot of data out in the world doesn't come in latitude/longitude coordinates. It's in UTM or Stateplane or some other coordinate reference system. Why? Because lat/lon just isn't very good when you care about inches or centimeter accuracy. And thank goodness engineers building roads and bridges, and surveyors measuring your property boundaries care very much.</p>
+<p>If your GeoRSS GML data is in a coordinate reference system other than lat/lon WGS84 (often technically referred to as EPSG:4236), add in an srsName attribute to your geometry.</p>
+<h4>3D decimal degrees CRS example</h4>
+<p>The key thing here is to use CRS epsg:4979, specify the srsDimension attribute, and include a third number in your coordinate tuple.</p>
+<pre>&lt;entry&gt;
+   ...
+   &lt;georss:where&gt;
+      &lt;gml:Point srsName=&quot;urn:ogc:def:crs:EPSG:6.6:4979&quot; srsDimension=&quot;3&quot;&gt;
+         &lt;gml:pos&gt;42.3453 -156.2342 45&lt;/gml:pos&gt;
+      &lt;/gml:Point&gt;
+   &lt;/georss:where&gt;
+&lt;/entry&gt;</pre>
+<h4>Stateplane CRS example</h4>
+<p>26986 is the Stateplane system for Massachusetts Mainland </p>
+<blockquote>
+<pre>&lt;entry&gt;
+
+   ...
+   <strong>&lt;georss:where&gt;</strong><!--
+     &lt;gml:Polygon&gt;
+         &lt;gml:exterior&gt;-->
+      <strong>&lt;gml:Polygon srsName=&quot;urn:ogc:def:crs:EPSG:6.6:26986&quot;&gt;
+         &lt;gml:exterior&gt;
+            &lt;gml:LinearRing&gt;
+               &lt;gml:posList&gt;</strong>
+            <strong>45.256 -110.45 46.46 -109.48 43.84 -109.86 45.256 -110.45</strong>
+               <strong>&lt;/gml:posList&gt;</strong>
+<strong>            &lt;/gml:LinearRing&gt;
+         &lt;/gml:exterior&gt;
+</strong>      <strong>&lt;/gml:Polygon&gt;</strong><!--
+         &lt;/gml:exterior&gt;
+      &lt;/gml:Polygon&gt;-->
+   <strong>&lt;/georss:where&gt;</strong>
+&lt;/entry&gt;
+</pre>
+</blockquote>
+
+<h2><a name="gmlappschema"></a>GML profile and application schema for GeoRSS</h2>
+<p>All good information encodings should be backed by a formal definition. In this case, we use XML schema to do the job. This helps software developers--especially XML-savvy ones, know the full capabilities of the language, and program their software to handle any case, not just those they've come across in examples.</p>
+<h3>GML Profile</h3>
+<p>GML is a large and complex language which is also defined by XML schema. Since it is so large, a practice has emerged to define subsets of GML, called Profiles, that contain only those elements of GML needed for the encoding job at hand. </p>
+<p>Here is our <a href="xml/1.0/gmlgeorss.xsd" target="_blank">GeoRSS GML Profile [http://www.georss.org/xml/1.0/gmlgeorss.xsd]</a>.</p>
+
+<p>We also have a rather large graphic of the <a href="graphics/georss-gml-uml.png" target="_blank">UML model for this profile</a>.  </p>
+<h3>GeoRSS Application Schema</h3>
+<p>The application schema defines  &lt;georss:where&gt; as the tag that signals geographic content--either in GeoRSS Simple or GML. </p>
+<p>Here is our GeoRSS Application Schema <a href="xml/1.0/georss.xsd" target="_blank"> [http://www.georss.org/xml/1.0/georss.xsd]</a>.</p>
+<p>The UML model is shown below. Click on it for a larger, more readable version. </p>
+
+<p><a href="graphics/georss-appschema-uml.png" target="_blank"><img src="graphics/georss-appschema-uml_sm.png" alt="GeoRSS application schema" width="490" height="309" border="0"></a></p>
+<p>&nbsp;</p>
+<p>
+  <!-- /Creative Commons License -->
+
+
+  <!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+</p>

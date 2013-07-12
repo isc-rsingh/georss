@@ -1,0 +1,44 @@
+<!--#set var="title" value="GeoRSS in Atom"-->
+<!--#include virtual="header.html"-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<title>GeoRSS in Atom</title>
+<link href="global.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<h4>GeoRSS ::<br/>Geographically Encoded Objects for RSS feeds</h4>
+<div class="nav"><a href="index.html">home</a> | <a href="overview.html">overview</a> | <a href="model.html">model</a><br/>
+<a href="gml.html">gml</a> | <a href="simple.html">simple</a> | <a href="w3c.html">W3C Geo</a><br/>
+<a href="atom.html">atom</a> | <a href="rdf_rss1.html">rdf/rss1</a> | <a href="/blog">blog</a></div>
+
+<h2>GeoRSS in Atom</h2>
+
+<h3> Overview</h3>
+<p>Location is specified using Atom 1.0's official extension mechanism (see <a href="http://www.atompub.org/2005/08/17/draft-ietf-atompub-format-11.html#extending_atom" target="_blank">Extending Atom</a>). We add a <strong>&lt;georss:where&gt;</strong> element as a child of the <strong>&lt;entry&gt;</strong> element. Within <strong>&lt;georss:where&gt;</strong> you may specify geography. We recommend that the <a href="gml.html">GML encoding</a> is used as follows:</p>
+<ul>
+  <!--
+   <li>      position <strong>&lt;georss:pos&gt; </strong> </li> -->
+  <li> point <strong>&lt;gml:Point&gt; </strong> </li>
+  <li> line <strong>&lt;gml:LineString&gt;</strong></li>
+  <li>polygon<strong> &lt;gml:Polygon&gt;</strong></li>
+  <li> box<strong> &lt;gml:Envelope&gt; </strong></li>
+</ul>
+<p><a href="simple.html">GeoRSS Simple </a> could also be used:</p>
+<ul>
+  <!--
+   <li>      position <strong>&lt;georss:pos&gt; </strong> </li> -->
+  <li> point <strong>&lt;georss:point&gt; </strong> </li>
+  <li> line <strong>&lt;georss:line&gt;</strong></li>
+  <li>polygon<strong> &lt;georss:polygon&gt;</strong></li>
+  <li> box<strong> &lt;georss:box&gt; </strong></li>
+</ul>
+<p>Atom processing software is required to either read or ignore this type of "foreign markup"--not fail, so there is no danger of breaking someone's RSS reader (or publisher) by including this &lt;where&gt; element in your feed. </p>
+<p>NOTE: GML allows you to specify a coordinate reference system (CRS) other than WGS84 decimal degrees (think lat/long). If you have a need to express geography in a CRS other than this, we recommend that you specify the geographic object multiple times, one in  WGS84 and the others in your other desired CRSes. </p>
+<h3>Examples</h3>
+<p>for now see the <a href="gml.html#examples">examples on the GML page</a> </p>
+
+<!--#include virtual="footer.html"-->
+</body>
+</html>

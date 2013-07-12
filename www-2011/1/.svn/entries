@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="79"
+   name=""
+   committed-date="2007-01-22T23:33:26.371173Z"
+   url="http://www.georss.org/svn/htdocs/1"
+   last-author="rajsingh"
+   kind="dir"
+   repos="http://www.georss.org/svn"
+   revision="79"/>
+<entry
+   name="graphics"
+   kind="dir"/>
+<entry
+   name="xml"
+   kind="dir"/>
+<entry
+   committed-rev="79"
+   name="global.css"
+   text-time="2007-01-22T23:32:34.000000Z"
+   committed-date="2007-01-22T23:33:26.371173Z"
+   checksum="ff4c7660f7abb514b6554720522a3a57"
+   last-author="rajsingh"
+   kind="file"/>
+<entry
+   committed-rev="79"
+   name="index.html"
+   text-time="2007-01-22T23:32:34.000000Z"
+   committed-date="2007-01-22T23:33:26.371173Z"
+   checksum="6e4761dd3bd600c7304ade42a2caee61"
+   last-author="rajsingh"
+   kind="file"/>
+</wc-entries>

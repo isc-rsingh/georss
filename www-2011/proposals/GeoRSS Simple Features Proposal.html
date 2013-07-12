@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>GeoRSS Simple Features Proposal</title>
+</head>
+
+<body>
+<p>GeoRSS Simple Features Proposal</p>
+
+<p>This proposal expands the current GeoRSS geometry types to include multi-geometries and a geometrycollection. These can be implemented with GeoRSS Simple and GeoRSS GML, and may be used with Atom, RSS2 or RSS1. </p>
+<p>The full list of supported geometry types becomes (bold = new):</p>
+<ul>
+   <li>box</li>
+   <li>point</li>
+   <li>linestring</li>
+   <li>polygon</li>
+   <li><strong>multipoint</strong></li>
+   <li><strong>multilinestring</strong></li>
+   <li><strong>multipolygon</strong></li>
+   <li><strong>geometry collection</strong></li>
+</ul>
+<h3>GeoRSS Simple examples:</h3>
+<p>MultiPoint</p>
+<p>Latitude-longitude pairs are separated by commas. The individual coordinates are still separated by whitespace. </p>
+<pre>&lt;georss:multipoint&gt;45.256 -71.92, 45.43 -71.98, 45.766 -72.04&lt;georss:multipoint&gt;</pre>
+
+<p>MultiLinestring</p>
+<p>Lines are separated by commas. Within each line, the coordinate pairs (tuples) and the individual coordinates are still separated by whitespace. </p>
+<pre>&lt;georss:multiline&gt;
+   45.256 -110.45 46.46 -109.48 43.84 -109.86, 
+   45.256 -71.92 45.43 -71.98 45.766 -72.04
+&lt;georss:multiline&gt;</pre>
+
+<p>MultiPolygon</p>
+<p>Polygons are separated by commas. Within each polygon, the coordinate pairs (tuples) and the individual coordinates are still separated by whitespace. </p>
+<pre>&lt;georss:multipolygon&gt;
+   5.256 -110.45 46.46 -109.48 43.84 -109.86 45.256 -110.45, 
+   45.256 -71.92 45.43 -71.98 45.766 -72.04,
+   5.256 -110.45 46.46 -109.48 43.84 -109.86 45.256 -110.45
+&lt;georss:multipolygon&gt;</pre>
+
+<p>Geometry Collection</p>
+<p>Geometry Collection is not implemented in Simple.</p>
+
+
+<h3>GeoRSS GML examples:</h3>
+<p>MultiPoint</p>
+<pre>&lt;georss:where&gt;
+   &lt;gml:MultiPoint&gt;
+      &lt;gml:pointMembers&gt;
+         &lt;gml:Point&gt;&lt;gml:pos&gt;45.256 -71.92&lt;/gml:pos&gt;&lt;/gml:Point&gt;
+         &lt;gml:Point&gt;&lt;gml:pos&gt;45.43 -71.98&lt;/gml:pos&gt;&lt;/gml:Point&gt;
+         &lt;gml:Point&gt;&lt;gml:pos&gt;45.766 -72.04&lt;/gml:pos&gt;&lt;/gml:Point&gt;
+      &lt;/gml:pointMembers&gt;
+   &lt;/gml:MultiPoint&gt;
+&lt;georss:where&gt;</pre>
+
+<p>MultiLinestring</p>
+<pre>&lt;georss:where&gt;
+   &lt;gml:MultiLineString&gt;
+      &lt;gml:lineMembers&gt;
+         &lt;gml:LineString&gt;
+            &lt;gml:posList&gt;45.256 -110.45 46.46 -109.48 43.84 -109.86&lt;/gml:posList&gt;
+         &lt;/gml:LineString&gt;
+         &lt;gml:LineString&gt;
+            &lt;gml:posList&gt;45.256 -71.92 45.43 -71.98 45.766 -72.04&lt;/gml:posList&gt;
+         &lt;/gml:LineString&gt;         
+
+      &lt;/gml:lineMembers&gt;
+   &lt;/gml:MultiLineString&gt;
+&lt;georss:where&gt;</pre>
+
+<p>MultiPolygon</p>
+<p>Polygons are separated by commas. Within each polygon, the coordinate pairs (tuples) and the individual coordinates are still separated by whitespace. </p>
+<pre>&lt;georss:where&gt;
+   &lt;gml:MultiPolygon&gt;
+      &lt;gml:polygonMembers&gt;
+         &lt;gml:Polygon&gt;
+            &lt;gml:exterior&gt;
+               &lt;gml:LinearRing&gt;
+                  &lt;gml:posList&gt;45.256 -110.45 46.46 -109.48 43.84 -109.86 45.256 -110.45&lt;/gml:posList&gt;
+               &lt;gml:LinearRing&gt;
+            &lt;gml:exterior&gt;
+         &lt;/gml:Polygon&gt;
+         &lt;gml:Polygon&gt;
+            &lt;gml:exterior&gt;
+               &lt;gml:LinearRing&gt;
+                  &lt;gml:posList&gt;45.256 -110.45 46.46 -109.48 43.84 -109.86 45.256 -110.45&lt;/gml:posList&gt;
+               &lt;gml:LinearRing&gt;
+            &lt;gml:exterior&gt;
+         &lt;/gml:Polygon&gt;         
+
+      &lt;/gml:polygonMembers&gt;
+   &lt;/gml:MultiPolygon&gt;
+&lt;georss:where&gt;</pre>
+
+<p>Geometry Collection</p>
+<pre>&lt;georss:where&gt;
+   &lt;gml:Point&gt;
+      &lt;gml:pos&gt;45.256 -71.92&lt;/gml:pos&gt;
+   &lt;/gml:Point&gt;
+   &lt;gml:MultiPoint&gt;
+      &lt;gml:pointMembers&gt;
+         &lt;gml:Point&gt;&lt;gml:pos&gt;45.256 -71.92&lt;/gml:pos&gt;&lt;/gml:Point&gt;
+         &lt;gml:Point&gt;&lt;gml:pos&gt;45.43 -71.98&lt;/gml:pos&gt;&lt;/gml:Point&gt;
+         &lt;gml:Point&gt;&lt;gml:pos&gt;45.766 -72.04&lt;/gml:pos&gt;&lt;/gml:Point&gt;
+      &lt;/gml:pointMembers&gt;
+   &lt;/gml:MultiPoint&gt;
+   &lt;gml:MultiLineString&gt;
+      &lt;gml:lineMembers&gt;
+         &lt;gml:LineString&gt;
+            &lt;gml:posList&gt;45.256 -110.45 46.46 -109.48 43.84 -109.86&lt;/gml:posList&gt;
+         &lt;/gml:LineString&gt;
+         &lt;gml:LineString&gt;
+            &lt;gml:posList&gt;45.256 -71.92 45.43 -71.98 45.766 -72.04&lt;/gml:posList&gt;
+         &lt;/gml:LineString&gt;         
+
+      &lt;/gml:lineMembers&gt;
+   &lt;/gml:MultiLineString&gt;
+&lt;georss:where&gt;</pre>
+<p>&nbsp;</p>
+</body>
+</html>

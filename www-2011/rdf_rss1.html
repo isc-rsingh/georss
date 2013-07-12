@@ -1,0 +1,137 @@
+<!--#set var="title" value="GeoRSS in RDF"-->
+<!--#include virtual="header.html"-->
+
+<h3>RDF: a quick introduction</h3>
+
+<p><i>This material is preliminary and only for discussion at this time. </i></p>
+
+</p>
+
+<p>
+The RDF data model is so simple that it can be explained in a few paragraphs.</p>
+
+RDF encodes information using statements of the form 
+"the object O has property P with value V".  The value of a property may be a literal value,
+such as a string or number, or another object. Properties and objects are usually named using URIs.
+Here is an example:</p>
+
+
+<p>
+<pre style="z-index: 3;">
+    the Object http://en.wikipedia.org/wiki/Astoria_Oregon has 
+    the Property http://www.georss.org/georss/point with value
+    "46.183 -123.816".
+</pre>
+</p>
+
+<p>This statement means that the geographical location associated 
+with the specified Wikipedia page has latitude 46.183 and longitude
+-123.816.  In this case, the object is a web page, but physical or conceptual
+entities can also be named by URI in RDF statements.</p>
+
+<p>
+A unit of RDF content (eg an RDF page) is nothing more than a set of such statements.
+If the objects and literals are construed as nodes, and the statements as edges,
+the RDF data model can be viewed as a labeled directed graph. In particular, the statement
+"A has property P with value B" is represented by an edge labeled P joining node 
+A to node B.
+The detailed rules concerning labeling are: an edge is always labeled with a URI;
+an object node may be unlabeled, or labeled with a URI; a literal node is labeled
+with its value.
+</p>
+
+
+<p>
+This simple data model has several serializations - several representations as linear
+text.  The most commonly used (and the most complicated) utilizes XML. In XML, 
+nodes and properties are represented by XML elements. The properties of a node element are its
+children; each property element has a child, or content in the case of a literal,
+representing the value of the property. For example:
+</p>
+
+<pre style="z-index: 3;">
+&lt;?xml version="1.0"?&gt;
+&lt;rdf:RDF 
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:georss="http://www.georss.org/georss/"&gt;
+
+   &lt;rdf:Description rdf:about="http://en.wikipedia.org/wiki/Astoria_Oregon"&gt;
+       &lt;dc:title&gt;Astoria, Oregon&lt;/dc:title&gt;
+       <strong>&lt;georss:point&gt;46.183 -123.816&lt;/georss:point&gt;</strong>
+   &lt;/rdf:Description&gt;
+
+&lt;/rdf:RDF&gt;
+</pre>
+
+</p>
+
+<p>For more information about RDF, see the <a href="http://www.w3.org/RDF">RDF</a> pages at W3C.</p>
+
+<h3>Simple GeoRSS in RDF and RSS 1.0</h3>
+
+<p>
+In the RDF framework, the content and meaning of <a href="simple.html">Simple
+GeoRSS</a> can be 
+stated in a few words:
+<strong>georss:point, georss:line, georss:polygon, and georss:box</strong>
+are RDF properties. Each has a string literal as value, with the detailed
+forms as explained on the  <a href="simple.html">Simple GeoRSS</a> page.
+Asserting that the value of the property <strong>georss:point</strong>  for an
+object <strong>A</strong>
+ is <strong>"lat,long"</strong>
+means that the geographical location with these coordinates is  associated with <strong>A</strong>.
+ The nature of the association is left unspecified. 
+Similarly, the properties <strong>georss:line, georss:polygon,</strong> and<strong> georss:box</strong>,
+ assert the existence of associated 
+earth-located geometries.</p>
+
+<p>
+These properties can be used in any RDF context to make simple geographical assertions
+  about objects. Of particular interest in the current context is the RDF dialect
+  of RSS: 
+<a href="http://web.resource.org/rss/1.0/">RSS 1.0</a>. However, there is nothing
+special about how GeoRSS properties are used in RSS 1.0 - we need only note that
+any of the RSS 1.0 elements can be annotated with GeoRSS properties, including
+rss:channel, rss:item, and rss:image. Here is an example:</p>
+
+
+<pre style="z-index: 3;">
+
+&lt;rdf:RDF
+xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+xmlns:dc='http://purl.org/dc/elements/1.1/'
+xmlns='http://purl.org/rss/1.0/'
+xmlns:georss="http://www.georss.org/georss/"&gt;
+
+&lt;channel rdf:about='http://www.xml.com/'&gt;
+&lt;title&gt;XML.com&lt;/title&gt;
+&lt;link&gt;http://www.xml.com/&lt;/link&gt;
+&lt;description&gt;XML.com Articles and Weblogs&lt;/description&gt;
+&lt;dc:rights&gt;Copyright 2005, O'Reilly Media, Inc.&lt;/dc:rights&gt;
+&lt;items&gt;
+&lt;rdf:Seq&gt;
+&lt;rdf:li rdf:resource=
+      'http://www.oreillynet.com/pub/wlg/8466?CMP=OTC-TY3388567169' /&gt;
+&lt;/rdf:Seq&gt;
+&lt;/items&gt;
+&lt;/channel&gt;
+
+&lt;item rdf:about=
+      'http://www.oreillynet.com/pub/wlg/8466?CMP=OTC-TY3388567169'&gt;
+  &lt;title&gt;Live Coverage XML 2005 (Tuesday Keynotes)&lt;/title&gt;
+  &lt;link&gt;http://www.oreillynet.com/pub/wlg/8466?CMP=OTC-TY3388567169&lt;/link&gt;
+  &lt;description&gt;
+	   &lt;![CDATA[A live look at the XML Keynotes and seminal talks.]]&gt;
+  &lt;/description&gt;
+  &lt;dc:creator&gt;Kurt Cagle&lt;/dc:creator&gt;
+  &lt;dc:date&gt;2005-11-15T07:45:58-08:00&lt;/dc:date&gt;
+  <strong>&lt;georss:point&gt; 46.183 -123.816&lt;/georss:point&gt;</strong>
+&lt;/item&gt;
+
+&lt;/rdf:RDF&gt;
+
+</pre>
+
+
+<!--#include virtual="footer.html"-->

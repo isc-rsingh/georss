@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="79"
+   name=""
+   committed-date="2007-01-22T23:33:26.371173Z"
+   url="http://www.georss.org/svn/htdocs/1/graphics"
+   last-author="rajsingh"
+   kind="dir"
+   repos="http://www.georss.org/svn"
+   revision="79"/>
+<entry
+   committed-rev="79"
+   name="georss-appschema-uml.png"
+   text-time="2007-01-22T23:32:34.000000Z"
+   committed-date="2007-01-22T23:33:26.371173Z"
+   checksum="ead4ffaad445c2a1f95082f8c294e78a"
+   last-author="rajsingh"
+   kind="file"
+   prop-time="2007-01-22T23:32:34.000000Z"/>
+<entry
+   name="georss-model.jpg"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   name="ogc_header_top_left.gif"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   name="eogeo.png"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   committed-rev="79"
+   name="georss-model.png"
+   text-time="2007-01-22T23:32:34.000000Z"
+   committed-date="2007-01-22T23:33:26.371173Z"
+   checksum="fb2d1c020b58999dcd3ea8737c1ccd6d"
+   last-author="rajsingh"
+   kind="file"
+   prop-time="2007-01-22T23:32:34.000000Z"/>
+<entry
+   name="TTlogo.jpg"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   committed-rev="79"
+   name="gml_envelope.jpg"
+   text-time="2007-01-22T23:32:34.000000Z"
+   committed-date="2007-01-22T23:33:26.371173Z"
+   checksum="cb7205367b8a22f37fd13a29631ec371"
+   last-author="rajsingh"
+   kind="file"
+   prop-time="2007-01-22T23:32:34.000000Z"/>
+<entry
+   name="line.gif"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   name="polygon.gif"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   name="bg.gif"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   committed-rev="79"
+   name="georss-gml-uml.png"
+   text-time="2007-01-22T23:32:34.000000Z"
+   committed-date="2007-01-22T23:33:26.371173Z"
+   checksum="53fbd0364cae907f721f18269cb1fd00"
+   last-author="rajsingh"
+   kind="file"
+   prop-time="2007-01-22T23:32:34.000000Z"/>
+<entry
+   name="point.gif"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   name="203ffb84"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   name="worldkit.gif"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   committed-rev="79"
+   name="179-rule.jpg"
+   text-time="2007-01-22T23:32:34.000000Z"
+   committed-date="2007-01-22T23:33:26.371173Z"
+   checksum="30c89f204c578a124cb27aa602c7bce2"
+   last-author="rajsingh"
+   kind="file"
+   prop-time="2007-01-22T23:32:34.000000Z"/>
+<entry
+   name="georss.gif"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   name="icon.png"
+   kind="file"
+   deleted="true"
+   revision="80"/>
+<entry
+   committed-rev="79"
+   name="georss-appschema-uml_sm.png"
+   text-time="2007-01-22T23:32:34.000000Z"
+   committed-date="2007-01-22T23:33:26.371173Z"
+   checksum="6ae2ca39f916ddc5f899e5ff1c7b4e91"
+   last-author="rajsingh"
+   kind="file"
+   prop-time="2007-01-22T23:32:34.000000Z"/>
+</wc-entries>

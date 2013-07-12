@@ -1,0 +1,119 @@
+/* CSS Document */
+
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	background-color:#FFFFFF;
+}
+p {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+}
+a { color:#369; }
+a:visited { color:#369; }
+
+h4 { font-size: 13px; font-weight: bold; color: #369; }
+h3 { font-size: 16px; font-weight: bold; color: #369; }
+h2 { font-size: 18px; font-weight: bold; color: #369; }
+h1 { font-size: 20px; font-weight: bold; color: #369; }
+pre {
+	background-color: #FFFFCC;
+	border: 1px solid #fc6;
+	font-family: "Courier New", Courier, mono;
+	font-size: 13px;
+	width: 620px;
+	padding: 4px;
+}
+old-pre strong {
+	color: #369;
+	font-weight: bold;
+}
+.note {
+	color: #ffffff;
+	font-weight: normal;
+	font-style: italic;
+}
+.note-old {
+	background-color: #FFFFCC;
+	border: 2px solid #FFFF66;
+	padding: 4px;
+}
+
+.headcat {
+	background-color: #99CC66;
+}
+
+.nav {
+	top:10px;
+	right:10px;
+	font-size: 10px;
+	text-align:right;
+	color: #000099;
+	background:#9c6;
+	padding:6;
+	position: absolute;
+}
+
+#Menu {
+   overflow:auto;
+	width:160px;
+   float:right;
+   top:80px;
+   padding:8;
+   background: #9c6;
+   font-size: 12px;
+   border:0px solid #fff;
+	z-index:1;
+}
+
+#Credits {
+	overflow:auto;
+	width:160px;
+	float:right;
+	position:relative;
+	top:auto;
+	padding:8;
+	background: #9c6;
+	color: #000;
+	border:0px solid #000;
+	line-height:1.0em;
+	font-size: 10px;
+	z-index:1;
+}
+
+#Menu2 {
+   overflow:auto;
+	width:160px;
+	position:absolute; 
+	left:500px;
+   top:80px;
+   float:right;
+   margin-right/* hide from IE5.0/Win */ : 2em;
+   margin-top: 0.5em;
+   bottom:2em;
+   padding:8;
+   background: #9c6;
+   font-size: 12px;
+   border:0px solid #fff;
+	z-index:1;
+}
+
+#Credits2 {
+	overflow:auto;
+	width:160px;
+	position:absolute; 
+	left:500px;
+	right: 2em;
+	top:auto;
+	bottom:20px;
+	float:right;
+	margin-right/* hide from IE5.0/Win */ : 2em;
+	margin-top: 0.5em;
+	padding:8;
+	background: #9c6;
+	color: #000;
+	border:0px solid #000;
+	line-height:1.0em;
+	font-size: 10px;
+	z-index:1;
+}

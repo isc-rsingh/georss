@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="13"
+   name=""
+   committed-date="2006-04-12T02:14:15.424115Z"
+   url="http://www.georss.org/svn/htdocs/xml/1.0"
+   last-author="raj"
+   kind="dir"
+   uuid="14473b13-700f-0410-b242-c6d963d55231"
+   repos="http://www.georss.org/svn"
+   revision="78"/>
+<entry
+   committed-rev="8"
+   name="georss.xsd"
+   text-time="2007-01-09T02:38:04.000000Z"
+   committed-date="2006-04-10T04:52:00.386467Z"
+   checksum="1a3f12994c5971fb664a56c2bc777e2c"
+   last-author="raj"
+   kind="file"
+   prop-time="2007-01-09T02:38:04.000000Z"/>
+<entry
+   committed-rev="13"
+   name="gmlgeorss.xsd"
+   text-time="2007-01-09T02:38:04.000000Z"
+   committed-date="2006-04-12T02:14:15.424115Z"
+   checksum="23cf1baf98450e6d138979b75648fe06"
+   last-author="raj"
+   kind="file"
+   prop-time="2007-01-09T02:38:04.000000Z"/>
+</wc-entries>
