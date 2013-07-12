@@ -1,0 +1,73 @@
+{% include header.html title="GeoRSS overview" %}
+
+<p><a href="http://en.wikipedia.org/wiki/RSS_%28file_format%29 " target="_blank">RSS</a> is
+  a family of XML formats for exchanging news, especially news about Web pages
+  or other Web content. Many dynamic web sites, especially <a href="http://en.wikipedia.org/wiki/Blog">Weblogs</a> or "Blogs" now
+  provide RSS "feeds" of their new or changed content. Another common term for
+  a source of news in RSS format is"<a href="http://en.wikipedia.org/wiki/Web_feed" target="_blank">Web
+  feed</a>". The basic idea is a simple, brief, and structured XML format which
+  includes only key descriptive elements like author, date, title, narrative
+  description, and hypertext link, elements which help a reader (or an RSS "aggregator" service)
+  decide what source materials are worth examining in more detail. This concise,
+  structured format has also proven useful for publishing all kinds of small,
+  time-sensitive nuggets of information, including <a href="http://www.flickr.com/" target="_blank">Flickr's</a> photo
+  journals, <a href="http://www.craigslist.org/" target="_blank">Craigslist classifieds</a>,
+  and <a href="http://crcp-blogger.mit.edu/geoblogger/" target="_blank">local
+  events.</a> </p>
+<p><a href="http://www.georss.org" target="_blank">GeoRSS</a> is simple proposal
+  for RSS feeds to also be
+described by location or <a href="http://en.wikipedia.org/wiki/Geotagging" target="_blank">Geotagged</a>.
+We standardize the way in which "where" is encoded
+with enough <em>simplicity</em> and <em>descriptive power</em> to
+satisfy most needs to describe the location of Web content. 
+GeoRSS may not work for every use (for example, we provide for only one location
+per RSS entry), but it should serve as an easy-to-use geotagging language that
+is brief and simple with useful defaults but extensible and
+upwardly-compatible with more sophisticated formats like the <a href="http://www.opengeospatial.org/">OGC
+(Open Geospatial Consortium)</a> <a href="http://en.wikipedia.org/wiki/Geography_Markup_Language">GML</a> (Geography
+Markup Language).</p>
+<p>GeoRSS also serves informally as an extension to the W3C <a href="http://www.w3.org/2003/01/geo/" target="_blank">geo
+    (point)</a> vocabulary
+(sometimes also referred to as "GeoRSS"), adding important additional kinds of
+location
+(points, lines, and boundaries) as well as other extensibility.</p>
+<p>As an example of the need for more than just a point, consider a blog about a kayaking trip. Each RSS entry from such a blog could perhaps be described
+by a point location, but the entire voyage is clearly a linear path. The line description is
+especially important for making maps of trips with trip lengths, intersections, and so on.
+Boundaries are important when you need to specify the edges of an area, which is very
+useful in talking about things within a certain state, town, or
+neighborhood for example.</p>
+<p>Perhaps the most powerful advantages of GeoRSS feeds will be seen
+in the possibilities for geographic search and aggregation. More than just
+  getting feeds for a particular city or zip code, using GeoRSS it will be posssible
+  to search with all sorts of geographic criteria. Perhaps all earthquake-related
+  items within 20 miles of your home--delivered to your phone, or a feed of traffic
+  accident items along your daily commute? Once RSS feeds contain geographic
+location, applications like these and more will be possible. </p>
+<p><a href="model.html">Next&gt;&gt;</a>  <!-- /Creative Commons License -->
+  
+
+  <!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+</p>
+<!--#include virtual="footer.html"-->

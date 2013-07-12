@@ -1,0 +1,102 @@
+{% include header.html title="Simple GeoRSS" %}
+
+<p>The Simple serialization of GeoRSS is designed to be maximally concise, in both representation and conception. Each of the four GeoRSS objects require only a single tag.</p>
+
+<p>This simplicity comes at the cost of direct upward compatibility with GML. However, it is straightforward to devise transformations from this Simple serialization to the GML serialization through the GML model. For many needs, GeoRSS Simple will be sufficient.</p>
+
+<p>Some publishers and users may prefer to seperate lat/long pairs by a comma rather than whitespace. This is permissible in Simple; GeoRSS parsers should just treat commas as whitespace.</p> 
+
+<p>The first example shows GeoRSS Simple within an Atom 1.0 entry. This serialization applies just as well to an RSS 2.0 or RSS 1.0 item; it can also be associated with the entire feed. The rest of the examples show only the encoding of the objects and attributes.<p/>
+
+<h2>Geometry</h2>
+
+<h3> Point</h3>
+<p>A point contains a single latitude-longitude pair, separated by whitespace. </p>
+{% highlight xml %}
+ <span><?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" 
+<strong>      xmlns:georss="http://www.georss.org/georss</strong>&quot; 
+      <span><strong>xmlns:gml="http://www.opengis.net/gml</strong>&quot;</span>></span>
+   <title>Earthquakes</title>
+   <subtitle>International earthquake observation labs</subtitle>
+   <link href="http://example.org/"/>
+   <updated>2005-12-13T18:30:02Z</updated>
+   <author>
+      <name>Dr. Thaddeus Remor</name>
+      <email>tremor@quakelab.edu</email>
+   </author>
+   <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
+   <entry>
+      <title>M 3.2, Mona Passage</title>
+      <link href="http://example.org/2005/09/09/atom01"/>
+      <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a</id>
+      <updated>2005-08-17T07:02:32Z</updated>
+      <summary>We just had a big one.</summary>
+<span>      <strong><georss:point>45.256 -71.92</georss:point>
+      </strong></span><<span>/entry>
+</feed></span>
+{% endhighlight %}
+
+<h3> Line</h3>
+<p>A line contains a space seperated list of latitude-longitude pairs, with each pair separated by whitespace. There must be at least two pairs.</p>
+<blockquote>
+<pre>&lt;georss:line&gt;45.256 -110.45 46.46 -109.48 43.84 -109.86&lt;/georss:line&gt;
+</pre>
+</blockquote>
+
+<h3>Polygon</h3>
+<p>A polygon contains a space seperated list of latitude-longitude pairs, with
+  each pair separated by whitespace. There must be at least four pairs, with
+  the last
+  being identical to the first (so a polygon has a minimum of three actual points).</p>
+<blockquote>
+<pre>&lt;georss:polygon&gt;
+	45.256 -110.45 46.46 -109.48 43.84 -109.86 45.256 -110.45
+&lt;/georss:polygon&gt;
+
+</pre>
+</blockquote>
+
+<h3>Box</h3>
+<p>A bounding box is a rectangular region, often used to define the extents of a map or a rough area of interest. A box contains two space seperate latitude-longitude pairs, with each pair separated by whitespace. The first pair is the lower corner, the second is the upper corner.</p>
+<blockquote>
+<pre>&lt;georss:box&gt;42.943 -71.032 43.039 -69.856&lt;/georss:box&gt;
+</pre>
+</blockquote>
+
+<h2>Additional Properties</h2>
+<h3>Feature Type, Feature Name, and Relationship Tags</h3>
+<p>The Feature Type, Feature Name, and Relationship tags are specified as GeoRSS elements.</p>
+<blockquote>
+<pre>
+    &lt;georss:point&gt;45.256 -110.45&lt;/georss:point&gt;
+    <b>&lt;georss:featuretypetag&gt;city&lt;/georss:featuretypetag&gt;
+    &lt;georss:relationshiptag&gt;is-centered-at&lt;/georss:relationshiptag&gt;
+    &lt;georss:featurename&gt;Podunk&lt;/georss:featurename&gt;</b>
+</pre>
+</pre>
+</blockquote>
+
+<h3>Elevation</h3>
+
+<p>Elevation, specified in GeoRSS elements, can be expressed as "elev" or "floor". elev is meant to contain "common" GPS elevation readings, i.e. height in meters from the WGS84 ellipsoid, which is a reading that should be easy to get from any GPS device. floor is meant to contain the floor number of a building. In some countries the numbering is different than in other countries, but since we'll know the location of the building, it should be fairly unambiguous.<p/>
+
+<blockquote>
+<pre>
+    &lt;georss:point&gt;45.256 -110.45&lt;/georss:point&gt;
+    <b>&lt;georss:elev&gt;313&lt;/georss:elev&gt;</b>
+
+    &lt;georss:point&gt;45.256 -110.45&lt;/georss:point&gt; 
+    <b>&lt;georss:floor&gt;2&lt;/georss:floor&gt;</b>
+</pre>
+</blockquote>
+
+<h3>Radius</h3>
+<p>"radius" indicates the size in meters of a radius or buffer around the geometry object, for example, radius of circular area around a point geometry.<p/>
+<blockquote>
+<pre>
+    &lt;georss:point&gt;45.256 -110.45&lt;/georss:point&gt;
+    <b>&lt;georss:radius&gt;500&lt;/georss:radius&gt;</b>
+</pre>
+</blockquote>
+<!--#include virtual="footer.html"-->

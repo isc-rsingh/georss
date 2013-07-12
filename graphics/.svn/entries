@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="18"
+   name=""
+   committed-date="2006-05-08T20:28:38.326311Z"
+   url="http://www.georss.org/svn/htdocs/graphics"
+   last-author="raj"
+   kind="dir"
+   uuid="14473b13-700f-0410-b242-c6d963d55231"
+   repos="http://www.georss.org/svn"
+   revision="78"/>
+<entry
+   committed-rev="7"
+   name="georss-appschema-uml.png"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-10T04:42:01.258897Z"
+   checksum="ead4ffaad445c2a1f95082f8c294e78a"
+   last-author="raj"
+   kind="file"
+   prop-time="2007-01-09T02:38:05.000000Z"/>
+<entry
+   committed-rev="4"
+   name="georss-model.jpg"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="2b82177aea71355d798e404844276bd3"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:05.000000Z"/>
+<entry
+   committed-rev="4"
+   name="ogc_header_top_left.gif"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="3349abbedc86c06f347c007e05ebfd6c"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:05.000000Z"/>
+<entry
+   committed-rev="4"
+   name="eogeo.png"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="8355a2f4d86dbe280c02d4fa86bba8f1"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:05.000000Z"/>
+<entry
+   committed-rev="10"
+   name="georss-model.png"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-10T15:14:44.829413Z"
+   checksum="fb2d1c020b58999dcd3ea8737c1ccd6d"
+   last-author="raj"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="TTlogo.jpg"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="dc01d55c476738732ff739022f0c409f"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="polygon.gif"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="12f03ec0a2c4fafd1729d98cbc3b409d"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="line.gif"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="317fffe8b9731206eee08b009a3c60b5"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="gml_envelope.jpg"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="cb7205367b8a22f37fd13a29631ec371"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bg.gif"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="3460d216590ba3c15e5066d8448224bd"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="7"
+   name="georss-gml-uml.png"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-10T04:42:01.258897Z"
+   checksum="53fbd0364cae907f721f18269cb1fd00"
+   last-author="raj"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="point.gif"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="bcbca24f62c7af5def1d7ee047614b11"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="203ffb84"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="317fffe8b9731206eee08b009a3c60b5"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="worldkit.gif"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="2af08beaf3002599ce1b897a04d7f33c"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:06.000000Z"/>
+<entry
+   committed-rev="4"
+   name="179-rule.jpg"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="30c89f204c578a124cb27aa602c7bce2"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:07.000000Z"/>
+<entry
+   committed-rev="4"
+   name="georss.gif"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="1b1f2c5e033c49f28b0d99660469c6e4"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:07.000000Z"/>
+<entry
+   committed-rev="4"
+   name="icon.png"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-04-01T09:24:41.837616Z"
+   checksum="9a951bfb43547c019f228235a57a8055"
+   last-author="mikel"
+   kind="file"
+   prop-time="2007-01-09T02:38:07.000000Z"/>
+<entry
+   committed-rev="18"
+   name="georss-appschema-uml_sm.png"
+   text-time="2007-01-09T02:38:07.000000Z"
+   committed-date="2006-05-08T20:28:38.326311Z"
+   checksum="6ae2ca39f916ddc5f899e5ff1c7b4e91"
+   last-author="raj"
+   kind="file"
+   prop-time="2007-01-09T02:38:07.000000Z"/>
+</wc-entries>
