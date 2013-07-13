@@ -1,69 +1,82 @@
-/* CSS Document */
+/* @override http://localhost/georss.org/github/georss/global.css */
 
 body {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size: 14px;
-	background-color:#FFFFFF;
+  font-family: "Open Sans", Georgia, "Times New Roman", Times, serif;
+  font-size: 11pt;
+  margin-left: 24px;
+  margin-right: 24px;
 }
-p {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size: 14px;
+
+h1, h2, h3, h4, h5, #Menu, .nav {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #369;
 }
+h1 { font-size: 20pt; }
+h2 { font-size: 16pt; }
+h3 { font-size: 14pt; }
+h4 { font-size: 12pt; }
+
 a { color:#369; }
 a:visited { color:#369; }
 
-h4 { font-size: 13px; font-weight: bold; color: #369; }
-h3 { font-size: 16px; font-weight: bold; color: #369; }
-h2 { font-size: 18px; font-weight: bold; color: #369; }
-h1 { font-size: 20px; font-weight: bold; color: #369; }
 pre {
-	background-color: #FFFFCC;
-	border: 1px solid #fc6;
-	font-family: "Courier New", Courier, mono;
-	font-size: 13px;
-	width: 620px;
-	padding: 4px;
+  background-color: #ffffed;
+  /*background-color: #ebf8fe;*/
+  font-family: "Courier New", Courier, mono;
+  font-size: 10pt;
+  width: 620px;
+  padding: 1em;
+  border-bottom-style: solid;
+  /*border-bottom-color: #ff9b9d;*/
+  border-bottom-color: #fee0a4;
+  border-top-color: #fee0a4;
 }
-old-pre strong {
+/*old-pre strong {
 	color: #369;
 	font-weight: bold;
-}
+}*/
 .note {
-	color: #ffffff;
+	color: #fff;
 	font-weight: normal;
 	font-style: italic;
 }
-.note-old {
+/*.note-old {
 	background-color: #FFFFCC;
 	border: 2px solid #FFFF66;
 	padding: 4px;
-}
+}*/
 
 .headcat {
-	background-color: #99CC66;
+	/*background-color: #99CC66;*/
+  border-bottom-style: dotted;
+  border-bottom-color: #99CC66;
+  border-bottom-width: 4px;
 }
 
 .nav {
-	top:10px;
-	right:10px;
-	font-size: 10px;
 	text-align:right;
-	color: #000099;
-	background:#9c6;
-	padding:6;
-	position: absolute;
+	color: #fff;
+	background: #2d6795;
+	padding:6px;
+	/*position: absolute;*/
+}
+.nav a, .nav a:visited, #Menu a, #Menu a:visited {
+  color: #fff;
 }
 
 #Menu {
-   overflow:auto;
-	width:160px;
-   float:right;
-   top:80px;
-   padding:8;
-   background: #9c6;
-   font-size: 12px;
+  overflow:auto;
+  width:184px;
+  float:right;
+   /*top:80px;*/
+   color: #fff;
+   background: #2d6795;
    border:0px solid #fff;
-	z-index:1;
+   padding:8px;
+   /*padding-right: 0px;*/
+   margin-left: 24px;
+   margin-right: 0px;
+  z-index:1;
 }
 
 #Credits {

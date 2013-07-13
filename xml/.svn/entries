@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="79"
+   name=""
+   committed-date="2007-01-22T23:33:26.371173Z"
+   url="http://www.georss.org/svn/htdocs/1/xml"
+   last-author="rajsingh"
+   kind="dir"
+   repos="http://www.georss.org/svn"
+   revision="79"/>
+<entry
+   name="1.0"
+   kind="dir"/>
+</wc-entries>

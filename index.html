@@ -1,32 +1,40 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>GeoRSS Home</title>
-<link href="global.css" type="text/css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>GeoRSS Home</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link href="global.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
 
 <div id="Menu">
-	<p>
-	&bull; <a href="overview.html">Overview</a><br>
-	&bull; <a href="model.html">Content model</a><br>
-	&bull; <a href="versions.html">Versions</a><br><br>
-	&bull; Geo Encodings<br>
-	&nbsp;&nbsp;&nbsp;- <a href="gml.html">GML</a><br>
-	&nbsp;&nbsp;&nbsp;- <a href="simple.html">Simple</a><br>
-	&nbsp;&nbsp;&nbsp;- Micro<br>
-	&nbsp;&nbsp;&nbsp;- <a href="w3c.html">W3C Geo</a><br><br>
-	
-	&bull; Usage<br>
-	&nbsp;&nbsp;&nbsp;- <a href="atom.html">Atom</a><br>
-	&nbsp;&nbsp;&nbsp;- <a href="rdf_rss1.html">RDF / RSS 1</a><br>
-	&bull; <a href="proposals.html">Proposals</a><br>
-	&bull; <a href="http://www.georss.org/blog/">Blog</a><br>
-	&nbsp;&nbsp;&nbsp;- <a href="http://www.georss.org/blog/?cat=4">Software</a><br>
-	&nbsp;&nbsp;&nbsp;- <a href="http://www.georss.org/blog/?cat=7">Feeds</a><br>
-	</p>
-	
+	<ul>
+		<li><a href="overview.html">Overview</a></li>
+		<li><a href="model.html">Content model</a></li>
+		<li><a href="versions.html">Versions</a></li>
+		<li>Geo Encodings
+			<ul>
+				<li><a href="gml.html">GML</a></li>
+				<li><a href="simple.html">Simple</a></li>
+				<li>Micro</li>
+				<li><a href="w3c.html">W3C Geo</a></li>
+			</ul>
+		</li>
+
+		<li>Usage
+			<ul>
+				<li><a href="atom.html">Atom</a></li>
+				<li><a href="rdf_rss1.html">RDF / RSS 1</a></li>
+			</ul>
+		</li>
+		<li><a href="proposals.html">Proposals</a></li>
+		<li><a href="implementations.html">Implementations</a></li>
+		<li><a href="http://www.georss.org/blog/">Blog</a></li>
+		<li><a href="http://www.georss.org/blog/?cat=4">Software</a></li>
+		<li><a href="http://www.georss.org/blog/?cat=7">Feeds</a></li>
+	</ul>
+		
 	<p>&nbsp;</p>
 
 	<p align="center"><font size="-2">Sponsors<br>(alphabetically)<br></font>
@@ -44,30 +52,30 @@
 
 <h1>GeoRSS :: <br>
 	Geographically Encoded Objects for RSS feeds</h1>
-<h2>&nbsp;</h2>
 
 <p>As RSS and Atom become more prevalent as a way to publish and share information, it becomes increasingly important that location is described in an interoperable manner so that applications can <b>request, aggregate, share and map</b> geographically tagged feeds. GeoRSS was designed as a lightweight, community driven way to extend existing feeds with geographic information.</p>
 
 <p>There are currently two encodings of GeoRSS, <a href="/simple" title="simple">Simple</a> and <a href="/gml" title="gml">GML</a>:</p>
 <ul>
 	<li>
-		<a href="/simple" title="simple">GeoRSS-Simple</a> is meant as a very lightweight format that developers and users can quickly and easily add to their existing feeds with little effort. It supports basic geometries (point, line, box, polygon) and covers the typical use cases when encoding locations.
+		<a href="simple" title="simple">GeoRSS-Simple</a> is meant as a very lightweight format that developers and users can quickly and easily add to their existing feeds with little effort. It supports basic geometries (point, line, box, polygon) and covers the typical use cases when encoding locations.
 	</li>
 	<li>
-		<a href="/gml" title="gml">GeoRSS GML</a> is a formal <a href="http://www.opengeospatial.org/groups/?iid=31" class="external text" title="http://www.opengeospatial.org/groups/?iid=31" rel="nofollow">GML</a> Application Profile, and supports a greater range of features, notably coordinate reference systems other than <a href="http://en.wikipedia.org/wiki/WGS84" class="external text" title="http://en.wikipedia.org/wiki/WGS84" rel="nofollow">WGS-84</a> latitude/longitude.
+		<a href="gml" title="gml">GeoRSS GML</a> is a formal <a href="http://www.opengeospatial.org/groups/?iid=31" class="external text" title="http://www.opengeospatial.org/groups/?iid=31" rel="nofollow">GML</a> Application Profile, and supports a greater range of features, notably coordinate reference systems other than <a href="http://en.wikipedia.org/wiki/WGS84" class="external text" title="http://en.wikipedia.org/wiki/WGS84" rel="nofollow">WGS-84</a> latitude/longitude.
 	</li>
 </ul>
 <p>
 	Both formats are designed for use with <a href="http://en.wikipedia.org/wiki/Atom_%28standard%29" class="external text" title="http://en.wikipedia.org/wiki/Atom_%28standard%29" rel="nofollow">Atom 1.0</a>, RSS 2.0 and RSS 1.0, although it can be used just as easily in non-RSS XML encodings. Finally, if you've come here simply looking for a way to encode a point in XML, use either the 'GML' or 'Simple' version:</p>
-	Simple<br/>
-	<pre><strong>&lt;georss:point&gt;45.256 -71.92&lt;/georss:point&gt;</strong></pre>
+<h3>Simple</h3>
+	<pre style="width:auto">&lt;georss:point&gt;45.256 -71.92&lt;/georss:point&gt;</pre>
 
-	GML<br/>
-	<pre><strong>&lt;georss:where&gt;
-	   &lt;gml:Point&gt;
-	      &lt;gml:pos&gt;45.256 -71.92&lt;/gml:pos&gt;
-	   &lt;/gml:Point&gt;</strong><strong>
-	&lt;/georss:where&gt;</strong></pre>
+<h3>GML</h3>
+	<pre style="width:auto">&lt;georss:where&gt;
+  &lt;gml:Point&gt;
+	  &lt;gml:pos&gt;45.256 -71.92&lt;/gml:pos&gt;
+	&lt;/gml:Point&gt;
+&lt;/georss:where&gt;
+</pre>
 
 <a name="Community" id="Community"></a><h1>Community</h1>
 <ul>
