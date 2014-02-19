@@ -207,7 +207,7 @@
 		
       </annotation>
 		
-      <attributeGroup ref="xlink:simpleLink"/>
+      <attributeGroup ref="xlink:simpleAttrs"/>
 		
       <attribute ref="gml:remoteSchema" use="optional"/>
 	
