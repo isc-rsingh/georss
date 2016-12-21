@@ -376,7 +376,7 @@ This type is available wherever there is a need for a "text" type property. It i
     
       <annotation>
       
-         <documentation>A set of values, representing a list of token with the lexical value space of NCName. The tokens are seperated by whitespace.</documentation>
+         <documentation>A set of values, representing a list of token with the lexical value space of NCName. The tokens are separated by whitespace.</documentation>
     
       </annotation>
     
@@ -929,7 +929,7 @@ This type is available wherever there is a need for a "text" type property. It i
 		
       <annotation>
 			
-         <documentation>A boundary of a surface consists of a number of rings. The "interior" rings seperate the surface / surface patch from the area enclosed by the rings.</documentation>
+         <documentation>A boundary of a surface consists of a number of rings. The "interior" rings separate the surface / surface patch from the area enclosed by the rings.</documentation>
 		
       </annotation>
 	
