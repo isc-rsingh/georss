@@ -1,6 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="description" content="Home page for the GeoRSS specification, a method of encoding geography in Atom and RSS feeds">
 	<title>GeoRSS Home</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<link href="global.css" type="text/css" rel="stylesheet">
@@ -30,9 +31,11 @@
 		</li>
 		<li><a href="proposals.html">Proposals</a></li>
 		<li><a href="implementations.html">Implementations</a></li>
+<!--
 		<li><a href="http://www.georss.org/blog/">Blog</a></li>
 		<li><a href="http://www.georss.org/blog/?cat=4">Software</a></li>
 		<li><a href="http://www.georss.org/blog/?cat=7">Feeds</a></li>
+-->
 	</ul>
 		
 	<p>&nbsp;</p>
@@ -55,13 +58,13 @@
 
 <p>As RSS and Atom become more prevalent as a way to publish and share information, it becomes increasingly important that location is described in an interoperable manner so that applications can <b>request, aggregate, share and map</b> geographically tagged feeds. GeoRSS was designed as a lightweight, community driven way to extend existing feeds with geographic information.</p>
 
-<p>There are currently two encodings of GeoRSS, <a href="/simple" title="simple">Simple</a> and <a href="/gml" title="gml">GML</a>:</p>
+<p>There are currently two encodings of GeoRSS, <a href="simple.html" title="simple">Simple</a> and <a href="gml.html" title="gml">GML</a>:</p>
 <ul>
 	<li>
-		<a href="simple" title="simple">GeoRSS-Simple</a> is meant as a very lightweight format that developers and users can quickly and easily add to their existing feeds with little effort. It supports basic geometries (point, line, box, polygon) and covers the typical use cases when encoding locations.
+		<a href="simple.html" title="simple">GeoRSS-Simple</a> is meant as a very lightweight format that developers and users can quickly and easily add to their existing feeds with little effort. It supports basic geometries (point, line, box, polygon) and covers the typical use cases when encoding locations.
 	</li>
 	<li>
-		<a href="gml" title="gml">GeoRSS GML</a> is a formal <a href="http://www.opengeospatial.org/groups/?iid=31" class="external text" title="http://www.opengeospatial.org/groups/?iid=31" rel="nofollow">GML</a> Application Profile, and supports a greater range of features, notably coordinate reference systems other than <a href="http://en.wikipedia.org/wiki/WGS84" class="external text" title="http://en.wikipedia.org/wiki/WGS84" rel="nofollow">WGS-84</a> latitude/longitude.
+		<a href="gml.html" title="gml">GeoRSS GML</a> is a formal <a href="http://www.opengeospatial.org/groups/?iid=31" class="external text" title="http://www.opengeospatial.org/groups/?iid=31" rel="nofollow">GML</a> Application Profile, and supports a greater range of features, notably coordinate reference systems other than <a href="http://en.wikipedia.org/wiki/WGS84" class="external text" title="http://en.wikipedia.org/wiki/WGS84" rel="nofollow">WGS-84</a> latitude/longitude.
 	</li>
 </ul>
 <p>
@@ -72,16 +75,15 @@
 <h3>GML</h3>
 	<pre style="width:auto">&lt;georss:where&gt;
   &lt;gml:Point&gt;
-	  &lt;gml:pos&gt;45.256 -71.92&lt;/gml:pos&gt;
-	&lt;/gml:Point&gt;
+    &lt;gml:pos&gt;45.256 -71.92&lt;/gml:pos&gt;
+  &lt;/gml:Point&gt;
 &lt;/georss:where&gt;
 </pre>
 
 <a name="Community" id="Community"></a><h1>Community</h1>
 <ul>
-	<li><a href="http://lists.georss.org/listinfo.cgi/discuss-georss.org" class="external text" title="http://lists.georss.org/listinfo.cgi/discuss-georss.org" rel="nofollow">GeoRSS Mailing List</a></li>
-	<li><a href="/Tools" title="Tools">Tools</a> - servers, clients, libraries, examples</li>
-	<li><a href="http://georss.org/blog/" class="external text" title="http://georss.org/blog/" rel="nofollow">GeoRSS Blog</a></li>
+	<!-- <li><a href="http://lists.georss.org/listinfo.cgi/discuss-georss.org" class="external text" title="http://lists.georss.org/listinfo.cgi/discuss-georss.org" rel="nofollow">GeoRSS Mailing List</a></li> -->
+	<li><a href="/implementations.html" title="Implementations">Implementations</a> - servers, clients, libraries, examples</li>
 	<li><a href="http://delicious.com/tag/georss" class="external text" title="http://delicious.com/tag/georss" rel="nofollow">GeoRSS on delicious</a></li>
 	<li><a href="http://www.facebook.com/pages/Mapping-GeoRSS/180355311999239" class="external text" title="http://www.facebook.com/pages/Mapping-GeoRSS/180355311999239" rel="nofollow">Mapping GeoRSS on Facebook</a></li>
 	<li><a href="http://landsurveyorsunited.com/page/surveyors-georss" class="external text" title="http://landsurveyorsunited.com/page/surveyors-georss" rel="nofollow">Land Surveying GeoRSS on Land Surveyors United</a></li>
@@ -99,8 +101,9 @@
 </ul>
 
 <hr align="center">
-<p><em><strong>Last update:</strong> July 12, 2013<!-- April 19, 2006 --><br>
-</em><strong>Discussion list:</strong> <a href="http://lists.eogeo.org/mailman/listinfo/georss" target="_blank">http://lists.eogeo.org/mailman/listinfo/georss</a><br>
+<p><em><strong>Last update:</strong>October 8, 2014<!-- July 12, 2013 --><!-- April 19, 2006 --><br>
+</em>
+<!-- <strong>Discussion list:</strong> <a href="http://lists.eogeo.org/mailman/listinfo/georss" target="_blank">http://lists.eogeo.org/mailman/listinfo/georss</a><br> -->
 </p>
 
 </body>

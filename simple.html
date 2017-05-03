@@ -1,12 +1,13 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html">
-<title>GeoRSS Simple</title>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'><link href="global.css" type="text/css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html">
+	<meta name="description" content="The GeoRSS specification simple encoding for adding geography to Atom and RSS feeds">
+	<title>GeoRSS Simple</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'><link href="global.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-	<div class="nav"><a href="index.html">home</a> | <a href="overview.html">overview</a> | <a href="model.html">model</a> | <a href="gml.html">gml</a> | <a href="simple.html">simple</a> | <a href="w3c.html">W3C Geo</a> | <a href="atom.html">atom</a> | <a href="rdf_rss1.html">rdf/rss1</a> | <a href="implementations.html">implementations</a> | <a href="proposals.html">proposals</a> | <a href="/blog">blog</a></div>
+	<div class="nav"><a href="index.html">home</a> | <a href="overview.html">overview</a> | <a href="model.html">model</a> | <a href="gml.html">gml</a> | <a href="simple.html">simple</a> | <a href="w3c.html">W3C Geo</a> | <a href="atom.html">atom</a> | <a href="rdf_rss1.html">rdf/rss1</a> | <a href="implementations.html">implementations</a> | <a href="proposals.html">proposals</a></div>
 
 <h4>GeoRSS ::<br/>Geographically Encoded Objects for RSS feeds</h4>
 <h2>GeoRSS Simple</h2>
@@ -15,7 +16,7 @@
 
 <p>This simplicity comes at the cost of direct upward compatibility with GML. However, it is straightforward to devise transformations from this Simple serialization to the GML serialization through the GML model. For many needs, GeoRSS Simple will be sufficient.</p>
 
-<p>Some publishers and users may prefer to seperate lat/long pairs by a comma rather than whitespace. This is permissible in Simple; GeoRSS parsers should just treat commas as whitespace.</p> 
+<p>Some publishers and users may prefer to separate lat/long pairs by a comma rather than whitespace. This is permissible in Simple; GeoRSS parsers should just treat commas as whitespace.</p> 
 
 <p>The first example shows GeoRSS Simple within an Atom 1.0 entry. This serialization applies just as well to an RSS 2.0 or RSS 1.0 item; it can also be associated with the entire feed. The rest of the examples show only the encoding of the objects and attributes.<p/>
 
@@ -49,14 +50,14 @@
 </blockquote>
 
 <h3> Line</h3>
-<p>A line contains a space seperated list of latitude-longitude pairs, with each pair separated by whitespace. There must be at least two pairs.</p>
+<p>A line contains a space separated list of latitude-longitude pairs, with each pair separated by whitespace. There must be at least two pairs.</p>
 <blockquote>
 <pre>&lt;georss:line&gt;45.256 -110.45 46.46 -109.48 43.84 -109.86&lt;/georss:line&gt;
 </pre>
 </blockquote>
 
 <h3>Polygon</h3>
-<p>A polygon contains a space seperated list of latitude-longitude pairs, with
+<p>A polygon contains a space separated list of latitude-longitude pairs, with
   each pair separated by whitespace. There must be at least four pairs, with
   the last
   being identical to the first (so a polygon has a minimum of three actual points).</p>
@@ -69,7 +70,7 @@
 </blockquote>
 
 <h3>Box</h3>
-<p>A bounding box is a rectangular region, often used to define the extents of a map or a rough area of interest. A box contains two space seperate latitude-longitude pairs, with each pair separated by whitespace. The first pair is the lower corner, the second is the upper corner.</p>
+<p>A bounding box is a rectangular region, often used to define the extents of a map or a rough area of interest. A box contains two space separate latitude-longitude pairs, with each pair separated by whitespace. The first pair is the lower corner, the second is the upper corner.</p>
 <blockquote>
 <pre>&lt;georss:box&gt;42.943 -71.032 43.039 -69.856&lt;/georss:box&gt;
 </pre>

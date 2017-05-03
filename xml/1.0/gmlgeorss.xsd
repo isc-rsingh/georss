@@ -4,7 +4,7 @@
       <documentation>GML Subset schema for gml:Point,gml:LineString,gml:Polygon,gml:Envelope  written by gmlSubset.xslt. </documentation>
       <documentation>Manually revised for reference by the GeoRSS application schema</documentation>
    </annotation>
-   <import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengeospatial.net/gml/3.1.1/xlink/xlinks.xsd"/>
+   <import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 
        <!-- ================================================= -->
    <element name="Point" type="gml:PointType" substitutionGroup="gml:_GeometricPrimitive"/>
@@ -207,7 +207,7 @@
 		
       </annotation>
 		
-      <attributeGroup ref="xlink:simpleLink"/>
+      <attributeGroup ref="xlink:simpleAttrs"/>
 		
       <attribute ref="gml:remoteSchema" use="optional"/>
 	
@@ -376,7 +376,7 @@ This type is available wherever there is a need for a "text" type property. It i
     
       <annotation>
       
-         <documentation>A set of values, representing a list of token with the lexical value space of NCName. The tokens are seperated by whitespace.</documentation>
+         <documentation>A set of values, representing a list of token with the lexical value space of NCName. The tokens are separated by whitespace.</documentation>
     
       </annotation>
     
@@ -929,7 +929,7 @@ This type is available wherever there is a need for a "text" type property. It i
 		
       <annotation>
 			
-         <documentation>A boundary of a surface consists of a number of rings. The "interior" rings seperate the surface / surface patch from the area enclosed by the rings.</documentation>
+         <documentation>A boundary of a surface consists of a number of rings. The "interior" rings separate the surface / surface patch from the area enclosed by the rings.</documentation>
 		
       </annotation>
 	

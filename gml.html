@@ -1,12 +1,13 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html">
-<title>GeoRSS GML</title>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'><link href="global.css" type="text/css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html">
+	<meta name="description" content="The GeoRSS specification GML encoding for adding geography to Atom and RSS feeds using Geography Markup Language from OGC">
+	<title>GeoRSS GML</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'><link href="global.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-<div class="nav"><a href="index.html">home</a> | <a href="overview.html">overview</a> | <a href="model.html">model</a> | <a href="gml.html">gml</a> | <a href="simple.html">simple</a> | <a href="w3c.html">W3C Geo</a> | <a href="atom.html">atom</a> | <a href="rdf_rss1.html">rdf/rss1</a> | <a href="implementations.html">implementations</a> | <a href="proposals.html">proposals</a> | <a href="/blog">blog</a></div>
+<div class="nav"><a href="index.html">home</a> | <a href="overview.html">overview</a> | <a href="model.html">model</a> | <a href="gml.html">gml</a> | <a href="simple.html">simple</a> | <a href="w3c.html">W3C Geo</a> | <a href="atom.html">atom</a> | <a href="rdf_rss1.html">rdf/rss1</a> | <a href="implementations.html">implementations</a> | <a href="proposals.html">proposals</a></div>
 
 <h4>GeoRSS ::<br/>Geographically Encoded Objects for RSS feeds</h4>
 <h2>GeoRSS GML</h2>
@@ -254,7 +255,7 @@ with a point in the &lt;entry&gt;.</p>
 <pre>&lt;entry&gt;
    ...
    &lt;georss:where&gt;
-      &lt;gml:Point srsName=&quot;urn:ogc:def:crs:EPSG:6.6:4979&quot; srsDimension=&quot;3&quot;&gt;
+      &lt;gml:Point srsName=&quot;urn:ogc:def:crs:EPSG:9.0:4979&quot; srsDimension=&quot;3&quot;&gt;
          &lt;gml:pos&gt;42.3453 -156.2342 45&lt;/gml:pos&gt;
       &lt;/gml:Point&gt;
    &lt;/georss:where&gt;
@@ -268,7 +269,7 @@ with a point in the &lt;entry&gt;.</p>
    <strong>&lt;georss:where&gt;</strong><!--
      &lt;gml:Polygon&gt;
          &lt;gml:exterior&gt;-->
-      <strong>&lt;gml:Polygon srsName=&quot;urn:ogc:def:crs:EPSG:6.6:26986&quot;&gt;
+      <strong>&lt;gml:Polygon srsName=&quot;urn:ogc:def:crs:EPSG:9.0:26986&quot;&gt;
          &lt;gml:exterior&gt;
             &lt;gml:LinearRing&gt;
                &lt;gml:posList&gt;</strong>
