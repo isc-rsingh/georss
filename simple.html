@@ -16,7 +16,7 @@
 
 <p>This simplicity comes at the cost of direct upward compatibility with GML. However, it is straightforward to devise transformations from this Simple serialization to the GML serialization through the GML model. For many needs, GeoRSS Simple will be sufficient.</p>
 
-<p>Some publishers and users may prefer to separate lat/long pairs by a comma rather than whitespace. This is permissible in Simple; GeoRSS parsers should just treat commas as whitespace.</p> 
+<p>Some publishers and users may prefer to separate lat/long pairs by a comma rather than whitespace. This is permissible in Simple; GeoRSS parsers should just treat commas as whitespace.</p>
 
 <p>The first example shows GeoRSS Simple within an Atom 1.0 entry. This serialization applies just as well to an RSS 2.0 or RSS 1.0 item; it can also be associated with the entire feed. The rest of the examples show only the encoding of the objects and attributes.<p/>
 
@@ -26,8 +26,8 @@
 <p>A point contains a single latitude-longitude pair, separated by whitespace. </p>
 <blockquote>
   <pre style="z-index: 3;"><span>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;feed xmlns="http://www.w3.org/2005/Atom" 
-<strong>      xmlns:georss="http://www.georss.org/georss</strong>&quot; 
+&lt;feed xmlns="http://www.w3.org/2005/Atom"
+<strong>      xmlns:georss="http://www.georss.org/georss</strong>&quot;
       <span><strong>xmlns:gml="http://www.opengis.net/gml</strong>&quot;</span>&gt;</span>
    &lt;title&gt;Earthquakes&lt;/title&gt;
    &lt;subtitle&gt;International earthquake observation labs&lt;/subtitle&gt;
@@ -98,7 +98,7 @@
     &lt;georss:point&gt;45.256 -110.45&lt;/georss:point&gt;
     <b>&lt;georss:elev&gt;313&lt;/georss:elev&gt;</b>
 
-    &lt;georss:point&gt;45.256 -110.45&lt;/georss:point&gt; 
+    &lt;georss:point&gt;45.256 -110.45&lt;/georss:point&gt;
     <b>&lt;georss:floor&gt;2&lt;/georss:floor&gt;</b>
 </pre>
 </blockquote>
@@ -115,6 +115,6 @@
 <h3>GeoRSS Application Schema</h3>
 
 <p>The application schema defines &lt;georss:where&gt; as the tag that signals geographic content--either in GeoRSS Simple or GML.</p>
-<p><a href="http://www.georss.org/xml/1.1/georss.xsd">Here is our GeoRSS Application Schema</a>.</p>
+<p><a href="http://www.georss.org/georss/georss.xsd">Here is our GeoRSS XML Application Schema</a> and here is GeoRSS Simple defined as a <a href="http://www.georss.org/georss/geo_2007.xml">Geo Ontology</a>OWL Ontology .</p>
 </body>
 </html>
